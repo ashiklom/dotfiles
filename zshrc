@@ -41,9 +41,7 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 # Aliases
 alias ls='ls --color=auto'
-alias evn='\vim -c Geeknote'
-alias vi=nvim
-alias vim=nvim
+alias evn='vim -c Geeknote'
 alias scc='ssh ashiklom@geo.bu.edu'
 alias cd.rtm='cd ~/Documents/Unsynced/pecan/modules/rtm'
 alias cd.us='cd ~/Documents/Unsynced'
