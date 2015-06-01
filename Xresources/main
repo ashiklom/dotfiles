@@ -1,7 +1,14 @@
-!URxvt*termName: screen-256color
+!URxvt*termName: rxvt-unicode
+URxvt*geometry: 90x24
+URxvt*loginShell: true
+URxvt*buffered: true
 
 ! Setup fonts
-URxvt*font: xft:Inconsolata:pixelsize=18:antialias=true:hinting=true, xft:DejaVu Sans Mono:pixelsize=15:antialias=true:hinting=true
+! Inconsolata, DejaVu Sans
+URxvt*font: xft:Inconsolata:pixelsize=18:, xft:DejaVu Sans Mono:pixelsize=15
+
+! Antialias + hinting
+!URxvt*font: xft:Inconsolata:pixelsize=18:antialias=true:hinting=true, xft:DejaVu Sans Mono:pixelsize=15:antialias=true:hinting=true
 
 ! Select colorscheme
 !#include "dotfiles/Xresources/solarized"
