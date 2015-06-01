@@ -1,5 +1,13 @@
 #!/bin/zsh
 
+# Download submodule zprezto
+git submodule init
+git submodule update
+cd .zprezto
+git submodule init
+git submodule update
+cd ..
+
 # Create symbolic links
 setopt EXTENDED_GLOB
 ln -s ~/dotfiles/.zprezto ~/.zprezto
