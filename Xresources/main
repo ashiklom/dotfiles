@@ -5,7 +5,7 @@ URxvt*buffered: true
 
 ! Setup fonts
 ! Inconsolata, DejaVu Sans
-URxvt*font: xft:Inconsolata:pixelsize=18:, xft:DejaVu Sans Mono:pixelsize=15
+URxvt*font: xft:Inconsolata:pixelsize=18, xft:DejaVu Sans Mono:pixelsize=15
 
 ! Antialias + hinting
 !URxvt*font: xft:Inconsolata:pixelsize=18:antialias=true:hinting=true, xft:DejaVu Sans Mono:pixelsize=15:antialias=true:hinting=true
