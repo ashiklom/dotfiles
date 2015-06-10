@@ -1,6 +1,3 @@
 [submodule ".zprezto"]
 	path = .zprezto
 	url = git@github.com:ashiklom/prezto
-[submodule "awesome/vicious"]
-	path = awesome/vicious
-	url = http://git.sysphere.org/vicious
