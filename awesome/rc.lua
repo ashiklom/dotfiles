@@ -1,21 +1,28 @@
+--{{{ Core Libraries
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
 awful.rules = require("awful.rules")
 require("awful.autofocus")
+
 -- Widget and layout library
 local wibox = require("wibox")
+
 -- Theme handling library
 local beautiful = require("beautiful")
+
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
+--}}}
 
+--{{{ User libraries
 -- Additional widget library
 vicious = require("vicious")
 
 -- Load Debian menu entries
 require("debian.menu")
+--}}}
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -68,11 +75,11 @@ local layouts =
     awful.layout.suit.tile.top,
     awful.layout.suit.fair,
     awful.layout.suit.fair.horizontal,
-    awful.layout.suit.spiral,
-    awful.layout.suit.spiral.dwindle,
-    awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
-    awful.layout.suit.magnifier
+    --awful.layout.suit.spiral,
+    --awful.layout.suit.spiral.dwindle,
+    awful.layout.suit.max
+    --awful.layout.suit.max.fullscreen,
+    --awful.layout.suit.magnifier
 }
 -- }}}
 
@@ -89,7 +96,7 @@ end
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[1])
+    tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[2])
 end
 -- }}}
 
