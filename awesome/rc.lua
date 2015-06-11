@@ -295,9 +295,12 @@ globalkeys = awful.util.table.join(
     -- Special keys (volume, etc.)
     awful.key({ }, "XF86MonBrightnessUp", function() awful.util.spawn("xbacklight -inc 10", false) end),
     awful.key({ }, "XF86MonBrightnessDown", function() awful.util.spawn("xbacklight -dec 10", false) end),
+    awful.key({ }, "XF86KbdBrightnessUp", function() awful.util.spawn_with_shell("sudo ~/dotfiles/misc/backlight-on", false) end),
+    awful.key({ }, "XF86KbdBrightnessDown", function() awful.util.spawn_with_shell("sudo ~/dotfiles/misc/backlight-off", false) end),
     awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer set Master 5%+") end),
     awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer set Master 5%-") end),
     awful.key({ }, "XF86AudioMute", function () awful.util.spawn("amixer -D pulse set Master toggle") end)
+
 )
 
 clientkeys = awful.util.table.join(

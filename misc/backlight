@@ -1,0 +1,8 @@
+# Allow any user to change keyboard backlight
+# Copy this file to /etc/sudoers.d
+
+Cmnd_Alias KBDON = /home/ashiklomanov/dotfiles/misc/backlight-on
+Cmnd_Alias KBDOFF = /home/ashiklomanov/dotfiles/misc/backlight-off
+Cmnd_Alias KBD = KBDON,KBDOFF
+
+ALL ALL = NOPASSWD:KBD
