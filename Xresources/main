@@ -2,6 +2,7 @@
 URxvt*geometry: 90x24
 URxvt*loginShell: true
 URxvt*buffered: true
+URxvt*scrollBar: false
 
 ! Setup fonts
 ! Inconsolata, DejaVu Sans

@@ -1,0 +1,8 @@
+#!/bin/bash
+# Quickly change font in terminal
+size=${1:-'18'}
+font=${2:-'Inconsolata for powerline'}
+fontstring="xft:$font:pixelsize=$size"
+echo $fontstring
+
+printf '\33]50;%s\007' "$fontstring"
