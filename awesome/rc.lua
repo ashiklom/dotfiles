@@ -128,11 +128,7 @@ mytextclock = awful.widget.textclock(" %a %b %d, %I:%M %p", 60)
 
 -- Network usage widget
 netwidget = wibox.widget.textbox()
-vicious.register(netwidget, vicious.widgets.net, '<span color="#CC9393">${wlan0 down_kb}</span> <span color="#7F9F7F">${wlan0 up_kb}</span>', 3)
-
--- Battery widget
-batwidget = wibox.widget.textbox()
-vicious.register(batwidget, vicious.widgets.bat, "BATT $1$2 ", 32, "BAT0")
+vicious.register(netwidget, vicious.widgets.net, '<span color="#CC9393">${eth0 down_kb}</span> <span color="#7F9F7F">${eth0 up_kb}</span>', 3)
 
 -- CPU Widget
 cpuwidget = wibox.widget.textbox()
