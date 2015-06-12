@@ -72,7 +72,7 @@ local layouts =
     awful.layout.suit.fair,
     awful.layout.suit.tile,
     awful.layout.suit.tile.left,
-    awful.layout.suit.tile.bottom,
+    --awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
     awful.layout.suit.floating,
     --awful.layout.suit.spiral,
@@ -477,3 +477,5 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --{{{ Autostart, misc.
 awful.util.spawn_with_shell("~/.config/awesome/autostart.sh")
 --}}}
+
+-- vim: set foldlevel=0 :
