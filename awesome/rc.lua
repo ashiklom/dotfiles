@@ -123,12 +123,24 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- }}}
 
 -- {{{ Wibox
--- Create a textclock widget
-mytextclock = awful.widget.textclock()
+-- Textclock widget
+mytextclock = awful.widget.textclock(" %a %b %d, %I:%M %p", 60)
 
 -- Network usage widget
 netwidget = wibox.widget.textbox()
 vicious.register(netwidget, vicious.widgets.net, '<span color="#CC9393">${wlan0 down_kb}</span> <span color="#7F9F7F">${wlan0 up_kb}</span>', 3)
+
+-- Battery widget
+batwidget = wibox.widget.textbox()
+vicious.register(batwidget, vicious.widgets.bat, "BATT $1$2 ", 32, "BAT0")
+
+-- CPU Widget
+cpuwidget = wibox.widget.textbox()
+vicious.register(cpuwidget, vicious.widgets.cpu, "CPU $1% ")
+
+-- Memory widget
+memwidget = wibox.widget.textbox()
+vicious.register(memwidget, vicious.widgets.mem, "MEM $1% ", 13)
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -209,6 +221,9 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
+    right_layout:add(memwidget)
+    right_layout:add(cpuwidget)
+    right_layout:add(batwidget)
     right_layout:add(netwidget)
     right_layout:add(mytextclock)
     right_layout:add(mylayoutbox[s])
