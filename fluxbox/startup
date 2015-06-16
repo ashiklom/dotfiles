@@ -5,20 +5,21 @@
 # Lines starting with a '#' are ignored.
 
 # Change your keymap:
-xmodmap "/home/ashiklomanov/.Xmodmap"
+#xmodmap "/home/ashiklomanov/.Xmodmap"
 
 # Applications you want to run with fluxbox.
 # MAKE SURE THAT APPS THAT KEEP RUNNING HAVE AN ''&'' AT THE END.
 #
-# unclutter -idle 2 &
 # wmnd &
 # wmsmixer -w &
-# idesk &
-wicd-client -t &
-dropbox start
-mintupdate-launcher &
-~/dotfiles/misc/touchpad-settings.sh
-#
+#wicd-client -t &
+nm-applet &
+dropbox start                          # Dropbox
+mintupdate-launcher &                  # Linux mint updates
+batti &                                # Battery monitor
+~/dotfiles/misc/touchpad-settings.sh   # Disable tap to click and other settings
+nitrogen --restore                     # Set background image
+
 # Debian-local change:
 #   - fbautostart has been added with a quick hack to check to see if it
 #     exists. If it does, we'll start it up by default.
