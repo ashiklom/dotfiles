@@ -111,7 +111,8 @@ myawesomemenu = {
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
                                     { "Debian", debian.menu.Debian_menu.Debian },
-                                    { "open terminal", terminal }
+                                    { "open terminal", terminal },
+                                    { "shutdown", function() awesome.spawn_with_shell("gksu shutdown now"); end}
                                   }
                         })
 
@@ -280,6 +281,9 @@ globalkeys = awful.util.table.join(
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
+    awful.key({ modkey,           }, "i", function() awful.util.spawn_with_shell('firefox') end),
+    awful.key({ modkey,           }, "e", function() awful.util.spawn_with_shell('nixnote') end),
+    awful.key({ modkey,           }, "d", function() awful.util.spawn_with_shell('pcmanfm') end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
