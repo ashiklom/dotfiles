@@ -2,7 +2,7 @@
 -- Custom awesome theme --
 ---------------------------
 
-themedir = "/home/ashiklomanov/dotfiles/awesome/themes/custom/"
+themedir = "~/dotfiles/awesome/themes/custom/"
 
 theme = {}
 
