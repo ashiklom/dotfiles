@@ -31,7 +31,7 @@ session.screen0.iconbar.iconTextPadding:	10
 session.screen0.iconbar.usePixmap:	true
 session.screen0.iconbar.mode:	{static groups} (workspace)
 session.screen0.iconbar.iconWidth:	128
-session.screen0.windowMenu:	/home/ashiklomanov/.fluxbox/windowmenu
+session.screen0.windowMenu:	/.fluxbox/windowmenu
 session.screen0.rowPlacementDirection:	LeftToRight
 session.screen0.strftimeFormat: %a %b %d, %I:%M %p
 session.screen0.windowPlacement:	RowMinOverlapPlacement
@@ -59,17 +59,17 @@ session.screen0.edgeSnapThreshold:	10
 session.screen0.menuDelay:	200
 session.cacheLife:	5
 session.forcePseudoTransparency:	false
-session.slitlistFile:	/home/ashiklomanov/.fluxbox/slitlist
+session.slitlistFile:	~/.fluxbox/slitlist
 session.doubleClickInterval:	250
-session.appsFile:	/home/ashiklomanov/.fluxbox/apps
+session.appsFile:	~/.fluxbox/apps
 session.colorsPerChannel:	4
 session.cacheMax:	200
 session.menuFile:	~/.fluxbox/menu
 session.tabPadding:	0
 session.autoRaiseDelay:	250
 session.configVersion:	13
-session.styleOverlay:	/home/ashiklomanov/.fluxbox/overlay
+session.styleOverlay:	~/.fluxbox/overlay
 session.ignoreBorder:	false
-session.styleFile:	/home/ashiklomanov/.fluxbox/styles/Elfin2/theme.cfg
+session.styleFile:	~/.fluxbox/styles/Elfin2/theme.cfg
 session.tabsAttachArea:	Window
 session.keyFile:	~/.fluxbox/keys
