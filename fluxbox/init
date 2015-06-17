@@ -31,12 +31,12 @@ session.screen0.iconbar.iconTextPadding:	10
 session.screen0.iconbar.usePixmap:	true
 session.screen0.iconbar.mode:	{static groups} (workspace)
 session.screen0.iconbar.iconWidth:	128
-session.screen0.windowMenu:	/.fluxbox/windowmenu
+session.screen0.windowMenu:	~/.fluxbox/windowmenu
 session.screen0.rowPlacementDirection:	LeftToRight
 session.screen0.strftimeFormat: %a %b %d, %I:%M %p
 session.screen0.windowPlacement:	RowMinOverlapPlacement
 session.screen0.autoRaise:	true
-session.screen0.workspaceNames:	W1, W2, W3, W4,
+session.screen0.workspaceNames:	W1, W2, W3, W4, W5
 session.screen0.focusModel:	ClickFocus
 session.screen0.allowRemoteActions:	false
 session.screen0.defaultDeco:	NORMAL
