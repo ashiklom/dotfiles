@@ -47,6 +47,7 @@ Mod4 E E :Exec pcmanfm
 # Fluxbox configuration
 Mod4 F R :Reconfigure
 Mod4 F M :RootMenu
+Mod4 F S :Restart
 
 # volume settings, using common keycodes
 XF86AudioRaiseVolume :Exec amixer set Master 5%+
