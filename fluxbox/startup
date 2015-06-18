@@ -13,7 +13,8 @@
 # wmnd &
 # wmsmixer -w &
 #wicd-client -t &
-nm-applet &
+lxpolkit &                             # Lightweight (LX) authentication daemon
+nm-applet &                            # Network manager
 dropbox start                          # Dropbox
 mintupdate-launcher &                  # Linux mint updates
 batti &                                # Battery monitor
