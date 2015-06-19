@@ -3,13 +3,12 @@ URxvt*geometry: 90x24
 URxvt*loginShell: true
 URxvt*buffered: true
 URxvt*scrollBar: false
+URxvt*iso14755: false
+URxvt.iso14755_52: false
 
 ! Setup fonts
 ! Inconsolata, DejaVu Sans
-URxvt*font: xft:Inconsolata for Powerline:pixelsize=18, xft:Inconsolata:pixelsize=18, xft:DejaVu Sans Mono:pixelsize=15, xft:Monospace:pixelsize=15
-
-! Antialias + hinting
-!URxvt*font: xft:Inconsolata:pixelsize=18:antialias=true:hinting=true, xft:DejaVu Sans Mono:pixelsize=15:antialias=true:hinting=true
+URxvt*font: xft:Inconsolata for Powerline:pixelsize=18:antialias=true, xft:Inconsolata:pixelsize=18, xft:DejaVu Sans Mono:pixelsize=15, xft:Monospace:pixelsize=15
 
 ! Enable clipboard (default: have to use <S-Insert>)
 ! URxvt.perl-ext-common: default,clipboard
