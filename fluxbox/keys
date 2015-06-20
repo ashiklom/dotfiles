@@ -41,8 +41,8 @@ Mod4 R :Exec fbrun
 
 # Launchers
 Mod4 Return :Exec x-terminal-emulator -name terminal
-Mod4 E F :Exec firefox
-Mod4 E E :Exec pcmanfm
+Mod4 I :Exec firefox
+Mod4 O :Exec pcmanfm
 
 # Fluxbox configuration
 Mod4 F R :Reconfigure
@@ -53,6 +53,13 @@ Mod4 F S :Restart
 XF86AudioRaiseVolume :Exec amixer set Master 5%+
 XF86AudioLowerVolume :Exec amixer set Master 5%-
 XF86AudioMute :Exec amixer -D pulse set Master toggle
+
+# Other settings
+XF86MonBrightnessUp :Exec xbacklight -inc 10
+XF86MonBrightnessDown :Exec xbacklight -dec 10
+XF86KbdBrightnessUp :Exec sudo ~/dotfiles/misc/backlight-on
+XF86KbdBrightnessDown :Exec sudo ~/dotfiles/misc/backlight-off
+XF86LaunchA :Exec ~/dotfiles/misc/touchpad-toggle
 
 # current window commands
 Mod4 Q :Close
