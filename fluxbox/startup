@@ -17,7 +17,7 @@ lxpolkit &                             # Lightweight (LX) authentication daemon
 nm-applet &                            # Network manager
 dropbox start                          # Dropbox
 mintupdate-launcher &                  # Linux mint updates
-batti &                                # Battery monitor
+batti &                                # Battery monitor (python)
 ~/dotfiles/misc/touchpad-settings.sh   # Disable tap to click and other settings
 nitrogen --restore                     # Set background image
 
