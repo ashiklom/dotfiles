@@ -55,8 +55,10 @@ XF86AudioLowerVolume :Exec amixer set Master 5%-
 XF86AudioMute :Exec amixer -D pulse set Master toggle
 
 # Other settings
-XF86MonBrightnessUp :Exec xbacklight -inc 10
-XF86MonBrightnessDown :Exec xbacklight -dec 10
+XF86MonBrightnessUp :Exec xbacklight -inc 5
+Mod4 XF86MonBrightnessUp :Exec xbacklight -set 100
+XF86MonBrightnessDown :Exec xbacklight -dec 5
+Mod4 XF86MonBrightnessDown :Exec xbacklight -set 1
 XF86KbdBrightnessUp :Exec sudo ~/dotfiles/misc/backlight-on
 XF86KbdBrightnessDown :Exec sudo ~/dotfiles/misc/backlight-off
 XF86LaunchA :Exec ~/dotfiles/misc/touchpad-toggle
