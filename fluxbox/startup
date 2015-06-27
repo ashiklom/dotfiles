@@ -15,7 +15,8 @@
 #wicd-client -t &
 lxpolkit &                             # Lightweight (LX) authentication daemon
 nm-applet &                            # Network manager
-dropbox start                          # Dropbox
+dropbox start -i                       # Dropbox
+~/Software/copy/x86_64/CopyAgent &     # Copy
 mintupdate-launcher &                  # Linux mint updates
 batti &                                # Battery monitor (python)
 ~/dotfiles/misc/touchpad-settings.sh   # Disable tap to click and other settings
