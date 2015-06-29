@@ -11,10 +11,9 @@ URxvt.iso14755_52: false
 URxvt*font: xft:Inconsolata for Powerline:pixelsize=18:antialias=true, xft:Inconsolata:pixelsize=18, xft:DejaVu Sans Mono:pixelsize=15, xft:Monospace:pixelsize=15
 
 ! Enable clipboard (default: have to use <S-Insert>)
-! URxvt.perl-ext-common: default,clipboard
-! URxvt.iso14755: False
-! URxvt.keysym.Shift-Control-C: perl:clipboard:copy
-! URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.perl-ext-common: default,clipboard
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 
 ! Select colorscheme
 !#include "dotfiles/Xresources/solarized"
