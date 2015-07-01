@@ -10,10 +10,26 @@ URxvt.iso14755_52: false
 ! Inconsolata, DejaVu Sans
 URxvt*font: xft:Inconsolata for Powerline:pixelsize=18:antialias=true, xft:Inconsolata:pixelsize=18, xft:DejaVu Sans Mono:pixelsize=15, xft:Monospace:pixelsize=15
 
-! Enable clipboard (default: have to use <S-Insert>)
-URxvt.perl-ext-common: default,clipboard
-URxvt.keysym.Shift-Control-C: perl:clipboard:copy
-URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+! Perl extensions
+URxvt.perl-ext-common: default,clipboard,matcher
+URxvt.url-launcher: /usr/bin/firefox
+URxvt.matcher.button: 1
+
+!! Tabs (ext: tabbedex)
+!URxvt.tabbed.autohide: true
+!!URxvt.tabbed.no-tabbedex-keys: true
+!URxvt.keysym.Control-Shift-T: perl:tabbedex:new_tab
+!URxvt.keysym.Shift-Left: perl:tabbedex:next_tab
+!URxvt.keysym.Shift-Right: perl:tabbedex:prev_tab
+!URxvt.keysym.Control-Shift-Left: perl:tabbedex:move_tab_left
+!URxvt.keysym.Control-Shift-Right: perl:tabbedex:move_tab_right
+!URxvt.keysym.Control-Shift-R: perl:tabbedex:rename_tab
+
+! Clipboard (ext: clipboard)
+URxvt.clipboard.copycmd: xsel -ib
+URxvt.clipboard.pastecmd: xsel -ob
+URxvt.keysym.Control-Shift-C: perl:clipboard:copy
+URxvt.keysym.Control-Shift-V: perl:clipboard:paste
 
 ! Select colorscheme
 !#include "dotfiles/Xresources/solarized"
