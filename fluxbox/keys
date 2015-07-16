@@ -41,7 +41,7 @@ Mod4 R :Exec fbrun
 
 # Launchers
 Mod4 Return :Exec x-terminal-emulator -name terminal
-Mod4 I :Exec firefox
+Mod4 I :Exec x-www-browser
 Mod4 O :Exec pcmanfm
 
 # Fluxbox configuration
@@ -72,7 +72,7 @@ Mod4 0 :Fullscreen
 Mod4 D :ToggleCmd {ShowDesktop} {DeIconify all originquiet}
 
 # open the window menu
-Mod4 space :WindowMenu
+Mod4 Alt space :WindowMenu
 
 # exit fluxbox
 Control Mod1 Mod4 BackSpace :Exit
