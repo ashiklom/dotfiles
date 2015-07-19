@@ -1,6 +1,6 @@
 [submodule ".zprezto"]
 	path = .zprezto
-	url = git@github.com:ashiklom/prezto
+	url = https://github.com/ashiklom/prezto
 [submodule "urxvt-perls"]
 	path = urxvt-perls
-	url = git@github.com:muennich/urxvt-perls
+	url = https://github.com/muennich/urxvt-perls
