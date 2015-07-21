@@ -40,8 +40,8 @@ Mod4 k :PrevTab
 Mod4 R :Exec fbrun
 
 # Launchers
-Mod4 Return :Exec rxvt-unicode 
-Mod4 I :Exec x-www-browser
+Mod4 Return :Exec urxvt
+Mod4 I :Exec midori
 Mod4 O :Exec pcmanfm
 
 # Fluxbox configuration

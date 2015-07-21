@@ -34,4 +34,5 @@ xset r rate 160 40
 xrdb -I$HOME ~/.Xresources
 
 # Start window manager
-exec i3
+# exec i3
+exec startfluxbox

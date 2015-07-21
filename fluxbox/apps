@@ -2,3 +2,11 @@
   [Position]	(WINCENTER)	{0 0}
   [Layer]	{2}
 [end]
+
+[app] (urxvt)
+  [Maximized] {yes}
+[end]
+
+[app] (midori)
+  [Maximized] {yes}
+[end]
