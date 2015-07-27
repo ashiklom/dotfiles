@@ -7,7 +7,7 @@ OnDesktop Mouse3 :RootMenu
 OnWindow Mod4 Mouse1 :MacroCmd {Raise} {Focus} {StartMoving}
 OnWindowBorder Move1 :StartMoving
 
-OnWindow Mod4 Mouse3 :MacroCmd {Raise} {Focus} {StartResizing NearestCorner}
+OnWindow Mod1 Mouse1 :MacroCmd {Raise} {Focus} {StartResizing NearestCorner}
 OnLeftGrip Move1 :StartResizing bottomleft
 OnRightGrip Move1 :StartResizing bottomright
 
@@ -40,8 +40,8 @@ Mod4 k :PrevTab
 Mod4 R :Exec fbrun
 
 # Launchers
-Mod4 Return :Exec x-terminal-emulator -name terminal
-Mod4 I :Exec x-www-browser
+Mod4 Return :Exec urxvt
+Mod4 I :Exec firefox
 Mod4 O :Exec pcmanfm
 
 # Fluxbox configuration
