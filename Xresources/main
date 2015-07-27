@@ -8,7 +8,7 @@ URxvt.iso14755_52: false
 
 ! Setup fonts
 ! Inconsolata, DejaVu Sans
-URxvt*font: xft:Inconsolata for Powerline:pixelsize=18:antialias=true, xft:Inconsolata:pixelsize=18, xft:DejaVu Sans Mono:pixelsize=15, xft:Monospace:pixelsize=15
+URxvt*font: xft:Inconsolata for Powerline:pixelsize=19:antialias=true, xft:Inconsolata:pixelsize=19, xft:DejaVu Sans Mono:pixelsize=17, xft:Monospace:pixelsize=17
 
 ! Perl extensions
 URxvt.perl-ext-common: default,clipboard,matcher

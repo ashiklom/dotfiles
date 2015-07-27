@@ -30,8 +30,9 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
 fi
 
 # Preferences
-xset r rate 160 40
+xset r rate 300 40
 xrdb -I$HOME ~/.Xresources
+/usr/bin/VBoxClient-all
 
 # Start window manager
 # exec i3
