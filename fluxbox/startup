@@ -12,6 +12,7 @@
 #
 # wmnd &
 # wmsmixer -w &
+xrdb ~/.Xresources                     # Update Xresources
 lxpolkit &                             # Lightweight (LX) authentication daemon
 nm-applet &                            # Network manager
 dropbox start                          # Dropbox
