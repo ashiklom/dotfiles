@@ -7,7 +7,7 @@ OnDesktop Mouse3 :RootMenu
 OnWindow Control Mouse1 :MacroCmd {Raise} {Focus} {StartMoving}
 OnWindowBorder Move1 :StartMoving
 
-OnWindow Mod1 Mouse1 :MacroCmd {Raise} {Focus} {StartResizing NearestCorner}
+OnWindow Control Shift Mouse1 :MacroCmd {Raise} {Focus} {StartResizing NearestCorner}
 OnLeftGrip Move1 :StartResizing bottomleft
 OnRightGrip Move1 :StartResizing bottomright
 
