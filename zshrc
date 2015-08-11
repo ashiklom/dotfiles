@@ -46,3 +46,9 @@ alias evn='vim -c Geeknote'
 alias scc='ssh ashiklom@geo.bu.edu'
 alias cd.rtm='cd ~/Documents/Unsynced/pecan/modules/rtm'
 alias cd.us='cd ~/Documents/Unsynced'
+
+# Modify path
+export PATH=$HOME/.linuxbrew/bin:$PATH
+
+# Load modules
+module load R/3.2.0 gcc/4.9.2 tmux/2.0
