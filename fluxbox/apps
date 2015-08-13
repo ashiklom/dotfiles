@@ -4,5 +4,6 @@
 [end]
 
 [app] (urxvt)
-  [Maximized] {yes}
+  [Dimensions] {45% 90%}
+  [Position] (BottomRight) {5% 5%}
 [end]
