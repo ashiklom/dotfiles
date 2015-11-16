@@ -4,15 +4,15 @@ OnDesktop Mouse2 :WorkspaceMenu
 OnDesktop Mouse3 :RootMenu
 
 # Mod4 + left/right click to move/resize a window
-OnWindow Mod4 Mouse1 :MacroCmd {Raise} {Focus} {StartMoving}
+OnWindow Control Mouse1 :MacroCmd {Raise} {Focus} {StartMoving}
 OnWindowBorder Move1 :StartMoving
 
-OnWindow Mod1 Mouse1 :MacroCmd {Raise} {Focus} {StartResizing NearestCorner}
+OnWindow Control Shift Mouse1 :MacroCmd {Raise} {Focus} {StartResizing NearestCorner}
 OnLeftGrip Move1 :StartResizing bottomleft
 OnRightGrip Move1 :StartResizing bottomright
 
 # control-click a window's titlebar and drag to attach windows
-OnTitlebar Control Mouse1 :StartTabbing
+OnTitlebar Control Mouse3 :StartTabbing
 
 # double click on the titlebar to shade
 OnTitlebar Double Mouse1 :Shade
@@ -28,96 +28,108 @@ OnTitlebar Mouse2 :Lower
 OnTitlebar Mouse3 :WindowMenu
 
 # alt-tab
-Mod4 Tab :NextWindow {groups} (workspace=[current])
-Mod4 l :NextWindow {groups} (workspace=[current])
-Mod4 h :PrevWindow {groups} (workspace=[current])
+Control Tab :NextWindow {groups} (workspace=[current])
+#Mod4 l :NextWindow {groups} (workspace=[current])
+#Mod4 h :PrevWindow {groups} (workspace=[current])
 
 # cycle through tabs in the current window
-Mod4 j :NextTab
-Mod4 k :PrevTab
+#Mod4 j :NextTab
+#Mod4 k :PrevTab
 
 # open a dialog to run programs
-Mod4 R :Exec fbrun
+Mod1 R :Exec fbrun
 
 # Launchers
-Mod4 Return :Exec urxvt
-Mod4 I :Exec firefox
-Mod4 O :Exec pcmanfm
+Mod1 Return :Exec urxvt
+Mod1 I :Exec firefox
+Mod1 O :Exec pcmanfm
 
 # Fluxbox configuration
-Mod4 F R :Reconfigure
-Mod4 F M :RootMenu
-Mod4 F S :Restart
+Mod1 F R :Reconfigure
+Mod1 F M :RootMenu
+Mod1 F S :Restart
 
 # volume settings, using common keycodes
-XF86AudioRaiseVolume :Exec amixer set Master 5%+
-XF86AudioLowerVolume :Exec amixer set Master 5%-
-XF86AudioMute :Exec amixer -D pulse set Master toggle
+#XF86AudioRaiseVolume :Exec amixer set Master 5%+
+#XF86AudioLowerVolume :Exec amixer set Master 5%-
+#XF86AudioMute :Exec amixer -D pulse set Master toggle
 
 # Other settings
-XF86MonBrightnessUp :Exec xbacklight -inc 5
-Mod4 XF86MonBrightnessUp :Exec xbacklight -set 100
-XF86MonBrightnessDown :Exec xbacklight -dec 5
-Mod4 XF86MonBrightnessDown :Exec xbacklight -set 1
-XF86KbdBrightnessUp :Exec sudo ~/dotfiles/misc/backlight-on
-XF86KbdBrightnessDown :Exec sudo ~/dotfiles/misc/backlight-off
-XF86LaunchA :Exec ~/dotfiles/misc/touchpad-toggle
+#XF86MonBrightnessUp :Exec xbacklight -inc 5
+#Mod4 XF86MonBrightnessUp :Exec xbacklight -set 100
+#XF86MonBrightnessDown :Exec xbacklight -dec 5
+#Mod4 XF86MonBrightnessDown :Exec xbacklight -set 1
+#XF86KbdBrightnessUp :Exec sudo ~/dotfiles/misc/backlight-on
+#XF86KbdBrightnessDown :Exec sudo ~/dotfiles/misc/backlight-off
+#XF86LaunchA :Exec ~/dotfiles/misc/touchpad-toggle
 
 # current window commands
-Mod4 Q :Close
-Mod4 K :Kill
-Mod4 minus :Minimize
-Mod4 plus :Maximize
-Mod4 0 :Fullscreen
-Mod4 D :ToggleCmd {ShowDesktop} {DeIconify all originquiet}
+Mod1 Q :Close
+Mod1 X :Kill
+Mod1 minus :Minimize
+Mod1 plus :Maximize
+Mod1 0 :Fullscreen
+Mod1 D :ToggleCmd {ShowDesktop} {DeIconify all originquiet}
 
 # open the window menu
-Mod4 Alt space :WindowMenu
+#Mod4 Alt space :WindowMenu
 
 # exit fluxbox
-Control Mod1 Mod4 BackSpace :Exit
+Control Mod1 Shift BackSpace :Exit
 
 # change to previous/next workspace
-Mod4 Left :PrevWorkspace
-Mod4 Right :NextWorkspace
+Mod1 Left :PrevWorkspace
+Mod1 Right :NextWorkspace
 
 # send the current window to previous/next workspace
-Control Mod1 Mod4 Left :SendToPrevWorkspace
-Control Mod1 Mod4 Right :SendToNextWorkspace
+#Control Mod1 Mod4 Left :SendToPrevWorkspace
+#Control Mod1 Mod4 Right :SendToNextWorkspace
 
 # send the current window and follow it to previous/next workspace
-Control Mod4 Left :TakeToPrevWorkspace
-Control Mod4 Right :TakeToNextWorkspace
+Shift Mod1 Left :TakeToPrevWorkspace
+Shift Mod1 Right :TakeToNextWorkspace
 
 # change to a specific workspace
-Mod4 1 :Workspace 1
-Mod4 2 :Workspace 2
-Mod4 3 :Workspace 3
-Mod4 4 :Workspace 4
-Mod4 5 :Workspace 5
-Mod4 6 :Workspace 6
-Mod4 7 :Workspace 7
-Mod4 8 :Workspace 8
-Mod4 9 :Workspace 9
+Mod1 1 :Workspace 1
+Mod1 2 :Workspace 2
+Mod1 3 :Workspace 3
+Mod1 4 :Workspace 4
+Mod1 5 :Workspace 5
+Mod1 6 :Workspace 6
+Mod1 7 :Workspace 7
+Mod1 8 :Workspace 8
+Mod1 9 :Workspace 9
 
 # send the current window to a specific workspace
-Mod4 grave 1 :SendToWorkspace 1
-Mod4 grave 2 :SendToWorkspace 2
-Mod4 grave 3 :SendToWorkspace 3
-Mod4 grave 4 :SendToWorkspace 4
-Mod4 grave 5 :SendToWorkspace 5
-Mod4 grave 6 :SendToWorkspace 6
-Mod4 grave 7 :SendToWorkspace 7
-Mod4 grave 8 :SendToWorkspace 8
-Mod4 grave 9 :SendToWorkspace 9
+Mod1 grave 1 :SendToWorkspace 1
+Mod1 grave 2 :SendToWorkspace 2
+Mod1 grave 3 :SendToWorkspace 3
+Mod1 grave 4 :SendToWorkspace 4
+Mod1 grave 5 :SendToWorkspace 5
+Mod1 grave 6 :SendToWorkspace 6
+Mod1 grave 7 :SendToWorkspace 7
+Mod1 grave 8 :SendToWorkspace 8
+Mod1 grave 9 :SendToWorkspace 9
 
 # send the current window and change to a specific workspace
-Mod4 W 1 :TakeToWorkspace 1
-Mod4 W 2 :TakeToWorkspace 2
-Mod4 W 3 :TakeToWorkspace 3
-Mod4 W 4 :TakeToWorkspace 4
-Mod4 W 5 :TakeToWorkspace 5
-Mod4 W 6 :TakeToWorkspace 6
-Mod4 W 7 :TakeToWorkspace 7
-Mod4 W 8 :TakeToWorkspace 8
-Mod4 W 9 :TakeToWorkspace 9
+Mod1 W 1 :TakeToWorkspace 1
+Mod1 W 2 :TakeToWorkspace 2
+Mod1 W 3 :TakeToWorkspace 3
+Mod1 W 4 :TakeToWorkspace 4
+Mod1 W 5 :TakeToWorkspace 5
+Mod1 W 6 :TakeToWorkspace 6
+Mod1 W 7 :TakeToWorkspace 7
+Mod1 W 8 :TakeToWorkspace 8
+Mod1 W 9 :TakeToWorkspace 9
+
+# Tiling windows (based on vim movement keys)
+Mod1 L :MacroCmd {ResizeTo 50% 100%} {MoveTo 00 00 LowerRight}
+Mod1 H :MacroCmd {ResizeTo 50% 100%} {MoveTo 00 00 LowerLeft}
+Mod1 K :MacroCmd {ResizeTo 100% 50%} {MoveTo 00 00 UpperRight}
+Mod1 J :MacroCmd {ResizeTo 100% 50%} {MoveTo 00 00 LowerRight}
+Mod1 bracketright :MacroCmd {ResizeTo 50% 50%} {MoveTo 00 00 LowerRight}
+Mod1 bracketleft :MacroCmd {ResizeTo 50% 50%} {MoveTo 00 00 LowerLeft}
+Mod1 Shift bracketright :MacroCmd {ResizeTo 50% 50%} {MoveTo 00 00 UpperRight}
+Mod1 Shift bracketleft :MacroCmd {ResizeTo 50% 50%} {MoveTo 00 00 UpperLeft}
+Mod1 P :MacroCmd {ResizeTo 60% 90%} {MoveTo 20% 2% UpperLeft}
+
