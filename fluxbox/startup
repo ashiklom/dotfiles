@@ -15,6 +15,11 @@
 xrdb ~/.Xresources                     # Update Xresources
 lxpolkit &                             # Lightweight (LX) authentication daemon
 nm-applet &                            # Network manager
+dropbox start                          # Dropbox
+~/Software/copy/x86_64/CopyAgent &     # Copy
+mintupdate-launcher &                  # Linux mint updates
+batti &                                # Battery monitor (python)
+gnome-do &                             # Gnome do
 ~/dotfiles/misc/touchpad-settings.sh   # Disable tap to click and other settings
 nitrogen --restore                     # Set background image
 
