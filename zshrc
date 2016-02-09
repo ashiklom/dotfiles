@@ -41,8 +41,10 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 # Aliases
 alias ls='ls --color=auto'
-alias vim='~/bin/vim'
+#alias vim='~/bin/vim'
 alias evn='vim -c Geeknote'
 alias scc='ssh ashiklom@geo.bu.edu'
 alias cd.rtm='cd ~/Documents/Unsynced/pecan/modules/rtm'
 alias cd.us='cd ~/Documents/Unsynced'
+
+module load R/3.2.0 tmux
