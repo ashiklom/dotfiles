@@ -1,3 +1,4 @@
+#!/bin/zsh -l
 # Colors
 export TERM=xterm-256color
 
@@ -41,7 +42,7 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 # Aliases
 alias ls='ls --color=auto'
-alias vim='~/bin/vim'
+#alias vim='~/bin/vim'
 alias evn='vim -c Geeknote'
 alias scc='ssh ashiklom@geo.bu.edu'
 alias cd.rtm='cd ~/Documents/Unsynced/pecan/modules/rtm'
@@ -51,4 +52,4 @@ alias cd.us='cd ~/Documents/Unsynced'
 export PATH=$HOME/.linuxbrew/bin:$PATH
 
 # Load modules
-module load R/3.2.0 gcc/4.9.2 tmux/2.0
+module load R/3.2.0 gcc/4.9.2 tmux/2.0 vim git
