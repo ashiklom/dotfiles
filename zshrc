@@ -42,14 +42,14 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 # Aliases
 alias ls='ls --color=auto'
-#alias vim='~/bin/vim'
-alias evn='vim -c Geeknote'
 alias scc='ssh ashiklom@geo.bu.edu'
-alias cd.rtm='cd ~/Documents/Unsynced/pecan/modules/rtm'
-alias cd.us='cd ~/Documents/Unsynced'
 
-# Modify path
-export PATH=$HOME/.linuxbrew/bin:$PATH
+# Git-specific aliases
+alias gws='git status --short'
+alias gp='git push'
+alias gia='git add'
+alias giu='git add --update'
+alias gcm='git commit -m'
 
 # Load modules
 module load R/3.2.0 gcc/4.9.2 tmux/2.0 vim git
