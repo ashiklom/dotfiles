@@ -1,4 +1,4 @@
-!URxvt*termName: rxvt-unicode
+URxvt*termName: xterm-256color
 URxvt*geometry: 90x24
 URxvt*loginShell: true
 URxvt*buffered: true
@@ -11,8 +11,8 @@ URxvt.iso14755_52: false
 URxvt*font: xft:Inconsolata for Powerline:pixelsize=18:antialias=true, xft:Inconsolata:pixelsize=18, xft:DejaVu Sans Mono:pixelsize=15, xft:Monospace:pixelsize=15
 
 ! Perl extensions
-URxvt.perl-ext-common: default,clipboard,matcher
-URxvt.url-launcher: /usr/bin/firefox
+URxvt.perl-ext-common: default,clipboard
+!URxvt.url-launcher: /usr/bin/firefox
 URxvt.matcher.button: 1
 
 !! Tabs (ext: tabbedex)
@@ -26,13 +26,7 @@ URxvt.matcher.button: 1
 !URxvt.keysym.Control-Shift-R: perl:tabbedex:rename_tab
 
 ! Clipboard (ext: clipboard)
-URxvt.clipboard.copycmd: xsel -ib
-URxvt.clipboard.pastecmd: xsel -ob
-URxvt.keysym.Control-Shift-C: perl:clipboard:copy
-URxvt.keysym.Control-Shift-V: perl:clipboard:paste
-
-! Select colorscheme
-!#include "dotfiles/Xresources/solarized"
-!#include "dotfiles/Xresources/custom_dark"
-#include "dotfiles/Xresources/monokai"
-
+!URxvt.clipboard.copycmd: xsel -ib
+!URxvt.clipboard.pastecmd: xsel -ob
+!URxvt.keysym.Control-Shift-C: perl:clipboard:copy
+!URxvt.keysym.Control-Shift-V: perl:clipboard:paste

@@ -1,0 +1,6 @@
+! Select terminal
+#include "dotfiles/Xresources/rxvt"
+!#include "dotfiles/Xresources/xterm"
+
+! Select colorscheme
+#include "dotfiles/Xresources/monokai"

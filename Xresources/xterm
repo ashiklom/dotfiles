@@ -1,0 +1,27 @@
+UXTerm*termName: xterm-256color
+UXTerm*geometry: 90x24
+UXTerm*loginShell: true
+UXTerm*scrollBar: false
+UXTerm*locale: true
+UXTerm*metaSendsEscape: true
+UXTerm*saveLines: 4096
+UXTerm*selectToClipboard: true
+UXTerm*dynamicColors: true
+
+! Xft settings
+Xft.dpi: 96
+Xft.antialias: true
+Xft.rgba: rgb
+Xft.hinting: true
+Xft.hintstyle: hintslight
+
+UXTerm*faceName: Inconsolata for Powerline, DejaVu Sans Mono for Powerline
+UXTerm*faceSize: 13
+
+! More Konsole/Yakuake-like keybindings:
+*VT100.Translations: #override \
+                    Shift <Key>Up:              scroll-back(1) \n\
+                    Shift <Key>Down:            scroll-forw(1) \n\
+                    Shift Ctrl <Key>V:          insert-selection(CLIPBOARD) \n\
+                    Shift Ctrl <Key>P:          insert-selection(PRIMARY) \n\
+                    Shift <Btn1Up>:             select-end(CLIPBOARD, CUT_BUFFER1)
