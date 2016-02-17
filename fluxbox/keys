@@ -40,7 +40,7 @@ Control Tab :NextWindow {groups} (workspace=[current])
 Mod1 R :Exec fbrun
 
 # Launchers
-Mod1 Return :Exec urxvt
+Mod1 Return :Exec uxterm
 Mod1 I :Exec firefox
 Mod1 O :Exec pcmanfm
 
