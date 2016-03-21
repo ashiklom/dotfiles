@@ -4,16 +4,18 @@
 # Depends on 'unclutter' to hide touchpad
 # Based on: https://github.com/Wuodan/local--usr-local-bin/blob/master/toggle-touchpad
 
-TPSTATUS=$(xinput list-props 12 | awk "/Device Enabled/ {print \$NF }")
+TPSTATUS=$(xinput list-props 11 | awk "/Device Enabled/ {print \$NF }")
 
 # Exit if getting status failed
 [ -z "$TPSTATUS" ] && exit 1
 
 if [ $TPSTATUS = 0 ]; then
-    xinput set-prop 12 "Device Enabled" 1
+    xinput set-prop 11 "Device Enabled" 1
     pkill unclutter
 else
-    xinput set-prop 12 "Device Enabled" 0
-    unclutter -idle 0.1
+    xinput set-prop 11 "Device Enabled" 0
+    unclutter -idle 0.1 &
 fi
+
+exit 0
 

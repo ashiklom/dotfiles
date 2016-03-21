@@ -1,4 +1,4 @@
-options(repos=structure(c(CRAN="http://lib.stat.cmu.edu/R/CRAN")))
+options(repos=structure(c(CRAN="https://cloud.r-project.org")))
 if(interactive()){
        library(colorout) # For colorized output in terminal emulators
        library(setwidth) # For automatic update of options('width')
