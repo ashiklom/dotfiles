@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # R aliases
 rdoc() {
   pth=${1:-.}
