@@ -2,6 +2,8 @@ if [[ -f "$HOME/.profile" ]]; then
     source "$HOME/.profile"
 fi
 
+MY_DOT_DIR=${MY_DOT_DIR:-$HOME/dotfiles}
+
 if [[ ! -d "$HOME/.zplug" ]]; then
     git clone https://github.com/zplug/zplug "$HOME/.zplug"
 fi
@@ -26,11 +28,10 @@ if [[ -f "$HOME/.zplug/init.zsh" ]]; then
     zplug load
 fi
 
-unalias rm 2>/dev/null
-alias ls='ls --color=auto'
+source "$MY_DOT_DIR/sh.common/common"
+
 alias vim='nvim'
 alias git='hub'
-export PATH=$PATH:$HOME/.local/bin
 
-source "$HOME/dotfiles/shrc-aliases/pbcopy.sh"
-source "$HOME/dotfiles/shrc-aliases/rfunctions.sh"
+source "$MY_DOT_DIR/shrc-aliases/pbcopy.sh"
+source "$MY_DOT_DIR/shrc-aliases/rfunctions.sh"
