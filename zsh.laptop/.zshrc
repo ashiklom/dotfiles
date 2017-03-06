@@ -35,3 +35,4 @@ alias git='hub'
 
 source "$MY_DOT_DIR/shrc-aliases/pbcopy.sh"
 source "$MY_DOT_DIR/shrc-aliases/rfunctions.sh"
+source "$MY_DOT_DIR/shrc-aliases/xfce-setup"

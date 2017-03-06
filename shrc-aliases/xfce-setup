@@ -1,0 +1,26 @@
+#!/bin/bash
+
+xfce-setup() {
+    THEME=${1:-"Arc-Dark"}
+    DPI=${2:-"96"}
+    MONITOR=${3:-"monitor-0"}
+
+    xfconf-query -c xsettings -p /Net/ThemeName -s "$THEME"
+    xfconf-query -c xsettings -p /Xft/DPI -s "$DPI"
+    xfconf-query -c xfce4-panel -p /panels/panel-1/output-name -s "$MONITOR"
+    xfconf-query -c xfce4-panel -p /panels/panel-2/output-name -s "$MONITOR"
+}
+
+laptop() {
+    xfce-setup "Arc-Dark" "96" "monitor-0"
+}
+
+monitor() {
+    xfce-setup "Arc-Dark" "96" "monitor-1"
+}
+
+hidpi() {
+    xfce-setup "Arc-Dark-HiDPI" "192" "monitor-1"
+}
+
+# vim: filetype=bash syntax=sh
