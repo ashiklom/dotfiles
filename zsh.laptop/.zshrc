@@ -19,7 +19,9 @@ if [[ -f "$HOME/.zplug/init.zsh" ]]; then
     zplug "modules/git", from:prezto
     zplug "modules/utility", from:prezto
     zplug "modules/prompt", from:prezto
+    zplug "plugins/colored-man-pages", from:oh-my-zsh
 
+    zstyle 'prezto:*:*' color 'yes'
     zstyle ':prezto:module:editor' key-bindings 'vi'
     zstyle ':prezto:module:editor' dot-expansion 'yes'
     zstyle ':prezto:module:prompt' theme 'sorin'
