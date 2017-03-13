@@ -1,24 +1,37 @@
 #!/bin/bash
 
 xfce-setup() {
-    MONITOR=${1:-"monitor-0"}
-    THEME=${2:-"Arc-Dark"}
-    DPI=${3:-"96"}
-    PANEL_SCALE=${4:-"1"}
 
-    PANEL1_OLDSIZE=25
-    PANEL2_OLDSIZE=35
-
-    PANEL1_SIZE=$((PANEL1_OLDSIZE * PANEL_SCALE))
-    PANEL2_SIZE=$((PANEL2_OLDSIZE * PANEL_SCALE))
+    local MONITOR=${1:-"monitor-0"}
+    local THEME=${2:-"Arc-Dark"}
+    local DPI=${3:-"96"}
 
     xfconf-query -c xsettings -p /Net/ThemeName -s "$THEME"
     xfconf-query -c xfwm4 -p /general/theme -s "$THEME"
     xfconf-query -c xsettings -p /Xft/DPI -s "$DPI"
     xfconf-query -c xfce4-panel -p /panels/panel-1/output-name -s "$MONITOR"
     xfconf-query -c xfce4-panel -p /panels/panel-2/output-name -s "$MONITOR"
-    xfconf-query -c xfce4-panel -p /panels/panel-1/size -s "$PANEL1_SIZE"
-    xfconf-query -c xfce4-panel -p /panels/panel-2/size -s "$PANEL2_SIZE"
+
+    local PANEL_SCALE=${4}
+
+    if [ -z $PANEL_SCALE ]; then
+        local PANEL1_OLDSIZE=25
+        local PANEL2_OLDSIZE=35
+        local PANEL1_SIZE=$((PANEL1_OLDSIZE * PANEL_SCALE))
+        local PANEL2_SIZE=$((PANEL2_OLDSIZE * PANEL_SCALE))
+        xfconf-query -c xfce4-panel -p /panels/panel-1/size -s "$PANEL1_SIZE"
+        xfconf-query -c xfce4-panel -p /panels/panel-2/size -s "$PANEL2_SIZE"
+    fi
+
+    #local D1PX=${5}
+    #local D1PY=${6}
+    #local D2PX=${7}
+    #local D2PY=${8}
+
+    #if [ -z $D1PX ]; then
+        #xfconf-query -c displays -p /Default/DP-1 -s "$PANEL1_SIZE"
+
+    
 }
 
 laptop() {
@@ -33,4 +46,4 @@ hidpi() {
     xfce-setup "monitor-1" "Arc-Dark-HiDPI" "192" "2"
 }
 
-# vim: filetype=bash syntax=sh
+# vim: filetype=sh syntax=sh
