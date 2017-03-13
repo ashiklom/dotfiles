@@ -1,26 +1,36 @@
 #!/bin/bash
 
 xfce-setup() {
-    THEME=${1:-"Arc-Dark"}
-    DPI=${2:-"96"}
-    MONITOR=${3:-"monitor-0"}
+    MONITOR=${1:-"monitor-0"}
+    THEME=${2:-"Arc-Dark"}
+    DPI=${3:-"96"}
+    PANEL_SCALE=${4:-"1"}
+
+    PANEL1_OLDSIZE=25
+    PANEL2_OLDSIZE=35
+
+    PANEL1_SIZE=$((PANEL1_OLDSIZE * PANEL_SCALE))
+    PANEL2_SIZE=$((PANEL2_OLDSIZE * PANEL_SCALE))
 
     xfconf-query -c xsettings -p /Net/ThemeName -s "$THEME"
+    xfconf-query -c xfwm4 -p /general/theme -s "$THEME"
     xfconf-query -c xsettings -p /Xft/DPI -s "$DPI"
     xfconf-query -c xfce4-panel -p /panels/panel-1/output-name -s "$MONITOR"
     xfconf-query -c xfce4-panel -p /panels/panel-2/output-name -s "$MONITOR"
+    xfconf-query -c xfce4-panel -p /panels/panel-1/size -s "$PANEL1_SIZE"
+    xfconf-query -c xfce4-panel -p /panels/panel-2/size -s "$PANEL2_SIZE"
 }
 
 laptop() {
-    xfce-setup "Arc-Dark" "96" "monitor-0"
+    xfce-setup "monitor-0" "Arc-Dark" "96" 
 }
 
 monitor() {
-    xfce-setup "Arc-Dark" "96" "monitor-1"
+    xfce-setup "monitor-1" "Arc-Dark" "96" 
 }
 
 hidpi() {
-    xfce-setup "Arc-Dark-HiDPI" "192" "monitor-1"
+    xfce-setup "monitor-1" "Arc-Dark-HiDPI" "192" "2"
 }
 
 # vim: filetype=bash syntax=sh
