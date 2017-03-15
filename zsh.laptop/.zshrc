@@ -38,3 +38,8 @@ alias git='hub'
 source "$MY_DOT_DIR/shrc-aliases/pbcopy.sh"
 source "$MY_DOT_DIR/shrc-aliases/rfunctions.sh"
 source "$MY_DOT_DIR/shrc-aliases/xfce-setup"
+
+# pecan server setup
+if [[ "$(hostname | grep 'pecan')" ]]; then
+    source "$MY_DOT_DIR/shrc-aliases/ssh-agent.sh"
+fi
