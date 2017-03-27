@@ -17,11 +17,13 @@ bspc rule -a Gimp desktop='^8' state=floating follow=on
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
+bspc rule -a Orage state=floating
 
 # Default x settings
 xset r rate 400 40
 
 # Autostart applications
+pgrep nitrogen || nitrogen --restore &
 pgrep volumeicon || volumeicon &
 pgrep light-locker || light-locker &
 pgrep xfce4-power-manager || xfce4-power-manager &

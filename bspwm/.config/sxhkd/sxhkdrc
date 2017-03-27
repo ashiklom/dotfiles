@@ -48,6 +48,10 @@ super + shift + r
 super + g
 	bspc node -s biggest
 
+# scratchpad
+control + grave
+	tdrop -a -w 1362 -y 14 -s dropdown urxvt
+
 # }}}
 
 # focus/swap {{{

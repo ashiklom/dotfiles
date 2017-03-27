@@ -141,7 +141,7 @@ launcher_item_app = /usr/share/applications/bspwm-shutdown.desktop
 launcher_item_app = /usr/share/applications/bspwm-reboot.desktop
 launcher_item_app = /usr/share/applications/bspwm-logout.desktop
 launcher_item_app = /usr/share/applications/chromium.desktop
-launcher_item_app = /usr/share/applications/tint2conf.desktop
+#launcher_item_app = /usr/share/applications/tint2conf.desktop
 launcher_item_app = /usr/share/applications/urxvt.desktop
 
 #-------------------------------------
