@@ -74,7 +74,7 @@ alt + Tab
 
 # focus last node
 super + Tab
-	bspc node -f last
+	bspc node -f last.local
 
 # focus the older or newer node in the focus history
 super + {o,i}
@@ -98,7 +98,7 @@ super + u
         bspc node -g hidden
 
 super + shift + u
-        bspc node $(bspc query -N -n .hidden | head -n1) -g hidden=off
+        bspc node $(bspc query -N -n .hidden | head -n1) -g hidden=off -f
 
 # }}}
 
@@ -115,6 +115,9 @@ super + {t,shift + t,s,f}
 # private -- tries to keep same tiling position/size
 super + ctrl + {x,y,z}
 	bspc node -g {locked,sticky,private}
+
+super + ctrl + {b,n,a}
+	bspc node -l {below, normal, above}
 
 # }}}
 
