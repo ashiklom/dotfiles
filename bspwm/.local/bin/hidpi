@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+xfce-setup "monitor-1" "Arc-Dark-HiDPI" "192" "2"

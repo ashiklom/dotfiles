@@ -3,7 +3,7 @@
 # Reload this file with Mod + Shift + R
 
 # Keyboard event monitor
-sxhkd &
+pgrep sxhkd || sxhkd &
 
 bspc monitor -d 1 2 3 4 5 6 7 8 9 10
 
@@ -23,20 +23,23 @@ bspc rule -a Orage state=floating
 bspc rule -a Gpick state=floating
 bspc rule -a R_x11 state=floating
 bspc rule -a Thunar state=floating
+bspc rule -a Xfce4-terminal state=floating
+bspc rule -a Xfce4-appfinder state=floating
 
 # Tabs Outliner
 bspc rule -a Chromium:crx_eggkanocgddhmamlbiijnphhppkpkmkl state=floating
 
 # Default x settings
-xset r rate 400 40
+#xset r rate 400 40
 
 # Autostart applications
-dropbox start &
-pgrep nitrogen || nitrogen --restore &
-pgrep volumeicon || volumeicon &
-pgrep light-locker || light-locker &
-pgrep xfce4-power-manager || xfce4-power-manager &
-pgrep nm-applet || nm-applet &
-
-# Start panel
-pgrep tint2 || tint2 &
+#dropbox start &
+#pgrep nitrogen || nitrogen --restore &
+#pgrep volumeicon || volumeicon &
+#pgrep light-locker || light-locker &
+#pgrep xfce4-power-manager || xfce4-power-manager &
+#pgrep nm-applet || nm-applet &
+#
+## Start panel
+#pgrep xfce4-panel || xfce4-panel
+##pgrep tint2 || tint2 &

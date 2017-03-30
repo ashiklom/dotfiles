@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+MONITOR=${1:-"monitor-0"}
+THEME=${2:-"Arc-Dark"}
+DPI=${3:-"96"}
+
+xfconf-query -c xsettings -p /Net/ThemeName -s "$THEME"
+xfconf-query -c xfwm4 -p /general/theme -s "$THEME"
+xfconf-query -c xsettings -p /Xft/DPI -s "$DPI"
+xfconf-query -c xfce4-panel -p /panels/panel-1/output-name -s "$MONITOR"
+
+PANEL_SCALE=${4}
+
+if [ -z $PANEL_SCALE ]; then
+    PANEL1_OLDSIZE=25
+    PANEL1_SIZE=$((PANEL1_OLDSIZE * PANEL_SCALE))
+    xfconf-query -c xfce4-panel -p /panels/panel-1/size -s "$PANEL1_SIZE"
+fi
