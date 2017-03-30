@@ -1,5 +1,7 @@
 unalias rm 2>/dev/null
 alias ls='ls --color=auto'
+
 export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.gem/ruby/current/bin
 
 # vim: filetype=sh syntax=sh

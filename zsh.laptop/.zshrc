@@ -19,12 +19,16 @@ if [[ -f "$HOME/.zplug/init.zsh" ]]; then
     zplug "modules/git", from:prezto
     zplug "modules/utility", from:prezto
     zplug "modules/prompt", from:prezto
+    #zplug "modules/tmux", from:prezto
     zplug "plugins/colored-man-pages", from:oh-my-zsh
 
     zstyle 'prezto:*:*' color 'yes'
     zstyle ':prezto:module:editor' key-bindings 'vi'
     zstyle ':prezto:module:editor' dot-expansion 'yes'
     zstyle ':prezto:module:prompt' theme 'sorin'
+
+    # Autostart tmux
+    #zstyle ':prezto:module:tmux:auto-start' local 'yes'
 
     zplug check || zplug install
     zplug load
@@ -37,7 +41,6 @@ alias git='hub'
 
 source "$MY_DOT_DIR/shrc-aliases/pbcopy.sh"
 source "$MY_DOT_DIR/shrc-aliases/rfunctions.sh"
-source "$MY_DOT_DIR/shrc-aliases/xfce-setup"
 
 # pecan server setup
 if [[ "$(hostname | grep 'pecan')" ]]; then
