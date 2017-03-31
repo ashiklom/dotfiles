@@ -66,11 +66,24 @@ super + {p,b,comma,period}
 
 # focus next/previous desktop
 super + bracket{left,right}
-	bspc desktop -f {prev,next}
+	bspc desktop -f {prev,next}.local
 
 # focus last (most recent) desktop
 alt + Tab
-	bspc desktop -f last
+	bspc desktop -f last.local
+
+# focus next/previous monitor
+super + {Prior,Next}
+	bspc monitor -f {prev,next}
+
+# move node to next/previous monitor
+super + shift + {Prior,Next}
+	bspc node -m {prev,next}
+
+
+# focus last (most recent) monitor
+super + grave
+	bspc monitor -f last
 
 # focus last node
 super + Tab
@@ -91,8 +104,8 @@ super + shift + bracket{left,right}
 	bspc node -d {prev,next} -f
 
 # focus or send to the given desktop
-super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+super + {_,shift + }{1-9,a,b,c}
+	bspc {desktop -f,node -d} '^{1-9,a,b,c}'
 
 super + u
         bspc node -g hidden
