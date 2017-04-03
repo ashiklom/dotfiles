@@ -3,7 +3,7 @@
 
 # wm independent hotkeys {{{
 super + Return
-	urxvt
+	termite
 
 super + space
 	dmenu_run
@@ -50,7 +50,7 @@ super + g
 
 # scratchpad
 control + grave
-	tdrop -a -w 1362 -y 14 -s dropdown urxvt
+	tdrop -a -m -w 1362 -y 14 -s dropdown termite
 
 # }}}
 
@@ -59,6 +59,9 @@ control + grave
 # focus the node in the given direction
 super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
+
+super + Tab
+	bspc node -f last.local
 
 # focus the node for the given path jump
 super + {p,b,comma,period}
@@ -80,17 +83,13 @@ super + {Prior,Next}
 super + shift + {Prior,Next}
 	bspc node -m {prev,next}
 
-
 # focus last (most recent) monitor
 super + grave
 	bspc monitor -f last
 
 # focus last node
-super + Tab
-	bspc node -f last.local
-
 # focus the older or newer node in the focus history
-super + {o,i}
+super + {_,shift + }o
 	bspc wm -h off; \
 	bspc node {older,newer} -f; \
 	bspc wm -h on
@@ -103,13 +102,15 @@ super + backslash
 super + shift + bracket{left,right}
 	bspc node -d {prev,next} -f
 
-# focus or send to the given desktop
-super + {_,shift + }{1-9,a,b,c}
-	bspc {desktop -f,node -d} '^{1-9,a,b,c}'
+# focus or send to the given desktop (on the current monitor)
+super + {_,shift + }{1-9}
+	bspc {desktop -f,node -d} $(bspc query -D -m | sed '{1-9}q;d')
 
+# Hide
 super + u
         bspc node -g hidden
 
+# Unhide
 super + shift + u
         bspc node $(bspc query -N -n .hidden | head -n1) -g hidden=off -f
 
