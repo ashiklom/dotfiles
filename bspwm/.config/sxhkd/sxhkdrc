@@ -6,7 +6,7 @@ super + Return
 	termite
 
 super + space
-	dmenu_run
+	rofi -show run
 
 super + i
 	chromium
