@@ -36,6 +36,9 @@ bspc rule -a Pavucontrol state=floating
 # Tabs Outliner
 bspc rule -a Chromium:crx_eggkanocgddhmamlbiijnphhppkpkmkl state=floating
 
+# Hangouts
+bspc rule -a 'Chromium:crx_knipolnnllmklapflnccelgolnpehhpl' state=floating sticky=off
+
 # Default x settings
 xset r rate 400 40
 
