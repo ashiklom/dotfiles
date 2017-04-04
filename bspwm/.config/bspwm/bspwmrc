@@ -16,8 +16,8 @@ bspc monitor "eDP-1" -d $(printf 'laptop-%01d ' {1..6})
 
 bspc config focused_border_color '#F3FF6F'
 bspc config border_width         2
-bspc config window_gap          6
-bspc config top_padding         29
+bspc config window_gap           6
+bspc config top_padding          27
 
 bspc config split_ratio          0.5
 bspc config borderless_monocle   true
@@ -40,7 +40,7 @@ bspc rule -a Pavucontrol state=floating
 bspc rule -a Arandr state=floating
 
 # Tabs Outliner
-bspc rule -a Chromium:crx_eggkanocgddhmamlbiijnphhppkpkmkl state=floating
+bspc rule -a 'Chromium:crx_eggkanocgddhmamlbiijnphhppkpkmkl' state=floating
 
 # Hangouts
 bspc rule -a 'Chromium:crx_knipolnnllmklapflnccelgolnpehhpl' state=floating sticky=off
