@@ -46,7 +46,7 @@ font-2 = "Wuncon Siji:pixelsize=10;1"
 
 modules-left = bspwm
 modules-center = 
-modules-right = filesystem volume xkeyboard memory cpu net bat0 bat1 temperature powermenu date 
+modules-right = filesystem xkeyboard memory cpu net bat0 bat1 temperature powermenu date 
 
 tray-position = right
 tray-padding = 2
@@ -56,7 +56,7 @@ tray-padding = 2
 wm-restack = bspwm
 ;wm-restack = i3
 
-;override-redirect = true
+override-redirect = true
 
 ;scroll-up = bspwm-desknext
 ;scroll-down = bspwm-deskprev
@@ -230,7 +230,7 @@ interval = 5
 date =
 date-alt = 
 
-time = "%I:%M %p, %d %b %Y"
+time = "%I:%M %p, %d %b"
 time-alt = 
 
 format-prefix = 

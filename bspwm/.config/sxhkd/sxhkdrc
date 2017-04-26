@@ -60,6 +60,9 @@ control + grave
 super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
+super + {minus,equal}
+	bspc node -f {prev,next}.local
+
 super + Tab
 	bspc node -f last.local
 
@@ -166,8 +169,8 @@ super + alt + shift + {h,j,k,l}
 	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
 # Reset ratio
-super + {_,shift +} equal
-	bspc node {-B,E}
+#super + {_,shift +} equal
+	#bspc node {-B,E}
 
 # move a floating window
 super + {Left,Down,Up,Right}

@@ -38,6 +38,7 @@ bspc rule -a Xfce4-terminal state=floating
 bspc rule -a Xfce4-appfinder state=floating
 bspc rule -a Pavucontrol state=floating
 bspc rule -a Arandr state=floating
+bspc rule -a Scp-dbus-service.py state=floating
 
 # Tabs Outliner
 bspc rule -a 'Chromium:crx_eggkanocgddhmamlbiijnphhppkpkmkl' state=floating
@@ -54,7 +55,7 @@ pgrep compton || compton &
 pgrep nitrogen || nitrogen --restore &
 pgrep volumeicon || volumeicon &
 pgrep light-locker || light-locker &
-#pgrep xfce4-power-manager || xfce4-power-manager &
+pgrep xfce4-power-manager || xfce4-power-manager &
 pgrep nm-applet || nm-applet &
 
 ## Start panel
