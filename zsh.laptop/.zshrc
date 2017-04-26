@@ -39,9 +39,6 @@ source "$MY_DOT_DIR/sh.common/common"
 alias vim='nvim'
 alias git='hub'
 
-# Enable alias completion (required for `hub` alias to work)
-setopt completealiases
-
 source "$MY_DOT_DIR/shrc-aliases/pbcopy.sh"
 source "$MY_DOT_DIR/shrc-aliases/rfunctions.sh"
 

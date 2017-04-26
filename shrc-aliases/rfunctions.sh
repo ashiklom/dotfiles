@@ -22,3 +22,8 @@ rdbt() {
   rinst $pth
   rtest $pth
 }
+
+rpkg() {
+  pth=${1:-.}
+  Rscript -e "devtools::create('"$pth"', rstudio = FALSE)"
+}
