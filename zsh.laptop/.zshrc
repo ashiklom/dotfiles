@@ -46,3 +46,6 @@ source "$MY_DOT_DIR/shrc-aliases/rfunctions.sh"
 if [[ "$(hostname | grep 'pecan')" ]]; then
     source "$MY_DOT_DIR/shrc-aliases/ssh-agent.sh"
 fi
+
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
