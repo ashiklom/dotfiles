@@ -9,7 +9,7 @@ super + space
 	rofi -show run
 
 super + i
-	chromium
+	env GTK_THEME=Adwaita:light firefox
 
 super + z
 	zotero
