@@ -2,28 +2,41 @@
 
 # R aliases
 rdoc() {
-  pth=${1:-.}
-  Rscript -e "devtools::document('"$pth"')"
+  local pth=${1:-.}
+  Rscript -e "devtools::document('$pth')"
 }
 
 rinst() {
-  pth=${1:-.}
-  Rscript -e "devtools::install('"$pth"')"
+  local pth=${1:-.}
+  Rscript -e "devtools::install('$pth')"
 }
 
 rtest() {
-  pth=${1:-.}
-  Rscript -e "devtools::test('"$pth"')"
+  local pth=${1:-.}
+  Rscript -e "devtools::test('$pth')"
 }
 
 rdbt() {
-  pth=${1:-.}
+  local pth=${1:-.}
   rdoc $pth
   rinst $pth
   rtest $pth
 }
 
 rpkg() {
-  pth=${1:-.}
-  Rscript -e "devtools::create('"$pth"', rstudio = FALSE)"
+  local pth=${1:-.}
+  Rscript -e "devtools::create('$pth', rstudio = FALSE)"
+}
+
+rupdate() {
+    Rscript -e "update.packages(ask = FALSE)"
+}
+
+rpinst() {
+    local pkg=$1
+    if [ -z "$pkg" ]; then
+        echo "No package provided"
+        return 0
+    fi
+    Rscript -e "install.packages('$pkg')"
 }
