@@ -40,3 +40,13 @@ rpinst() {
     fi
     Rscript -e "install.packages('$pkg')"
 }
+
+rrcpp() {
+    local pkg=$1
+    Rscript -e "Rcpp::compileAttributes('$pth')"
+}
+
+rclean() {
+    local pkg=$1
+    Rscript -e "devtools::clean_dll('$pth')"
+}

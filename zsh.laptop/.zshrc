@@ -10,8 +10,9 @@ fi
 
 if [[ -f "$HOME/.zplug/init.zsh" ]]; then
     source "$HOME/.zplug/init.zsh"
+    zplug "zplug/zplug", hook-build:'zplug --self-manage'
 
-    zplug "zsh-users/zsh-syntax-highlighting"
+    zplug "zdharma/fast-syntax-highlighting"
 
     zplug "modules/editor", from:prezto
     zplug "modules/directory", from:prezto
@@ -20,7 +21,7 @@ if [[ -f "$HOME/.zplug/init.zsh" ]]; then
     zplug "modules/utility", from:prezto
     zplug "modules/prompt", from:prezto
     #zplug "modules/tmux", from:prezto
-    zplug "plugins/colored-man-pages", from:oh-my-zsh
+    zplug "zuxfoucault/colored-man-pages_mod"
 
     zstyle 'prezto:*:*' color 'yes'
     zstyle ':prezto:module:editor' key-bindings 'vi'
