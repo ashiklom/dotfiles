@@ -41,7 +41,6 @@ alias vim='nvim'
 alias git='hub'
 
 source "$MY_DOT_DIR/shrc-aliases/pbcopy.sh"
-source "$MY_DOT_DIR/shrc-aliases/rfunctions.sh"
 
 # pecan server setup
 if [[ "$(hostname | grep 'pecan')" ]]; then
