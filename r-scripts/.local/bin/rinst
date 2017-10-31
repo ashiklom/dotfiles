@@ -5,6 +5,6 @@ if (length(args) == 0) {
 }
 
 devtools::document(args)
-devtools::install(args)
+devtools::install(args, dependencies = TRUE)
 
 # vim: set filetype=r:
