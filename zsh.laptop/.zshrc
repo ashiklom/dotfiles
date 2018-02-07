@@ -37,8 +37,12 @@ fi
 
 source "$MY_DOT_DIR/sh.common/common"
 
+export VISUAL=${VISUAL:-nvim}
 alias vim='nvim'
-alias git='hub'
+
+if (hub --version &> /dev/null); then
+    alias git='hub'
+fi
 
 source "$MY_DOT_DIR/shrc-aliases/pbcopy.sh"
 
@@ -51,3 +55,14 @@ fi
 if [[ -f ~/.fzf.zsh ]]; then
     source ~/.fzf.zsh
 fi
+
+if [[ -d "$HOME/.cabal/bin" ]]; then
+    export PATH=$PATH:$HOME/.cabal/bin
+fi
+
+#if [[ -z "$TMUX" ]] && [[ "$TERM" != "linux" ]]; then
+    #tmux new-session
+#fi
+
+# added by travis gem
+[ -f /home/ashiklom/.travis/travis.sh ] && source /home/ashiklom/.travis/travis.sh
