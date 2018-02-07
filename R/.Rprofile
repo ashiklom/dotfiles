@@ -1,8 +1,8 @@
-options(repos=structure(c(CRAN="https://cloud.r-project.org")))
+options(repos = structure(c(CRAN = "https://cloud.r-project.org")))
 
 if (interactive()) {
     if (!requireNamespace("colorout", quietly = TRUE)) {
-        devtools::install_github("jalvesaq/colorout")    
+        devtools::install_github("jalvesaq/colorout")
     }
     if (!requireNamespace("setwidth", quietly = TRUE)) {
         devtools::install_github("cran/setwidth")

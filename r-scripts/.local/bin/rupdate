@@ -1,4 +1,4 @@
 #!/usr/bin/env Rscript
-update.packages(ask = FALSE)
+update.packages(ask = FALSE, checkBuilt = TRUE)
 
 # vim: set filetype=r:

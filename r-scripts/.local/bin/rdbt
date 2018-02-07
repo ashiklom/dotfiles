@@ -1,9 +1,10 @@
 #!/usr/bin/env Rscript
 args <- commandArgs(trailingOnly = TRUE)
-if (length(args) > 0) {
-    devtools::document(args)
-    devtools::install(args)
-    devtools::test(args)
+if (length(args) == 0) {
+  args <- "."
 }
+devtools::document(args)
+devtools::install(args)
+devtools::test(args)
 
 # vim: set filetype=r:
