@@ -3,19 +3,19 @@
 
 # wm independent hotkeys {{{
 super + Return
-	termite
-
-super + space
-	rofi -show run
-
-super + i
-	env GTK_THEME=Adwaita:light firefox
-
-super + z
-	zotero
+	alacritty
 
 super + d
-	thunar
+	rofi -show drun
+
+super + i
+    firefox
+
+super + o
+    alacritty -e ranger
+
+super + shift + o
+    dolphin
 
 # reload sxhkd
 super + Escape
@@ -25,15 +25,15 @@ super + Escape
 # bspwm hotkeys {{{
 
 # Close (or kill) window
-super + {_,shift + }w
+super + shift + {_,control + }q
 	bspc node -{c,k}
 
 # quit bspwm normally
-super + alt + Escape
+super + shift + e
 	bspc quit
 
 # alternate between the tiled and monocle (fullscreen) layout
-super + m
+super + f
 	bspc desktop -l next
 
 # reload current config file
@@ -46,11 +46,11 @@ super + shift + r
 
 # swap the current node and the biggest node
 super + g
-	bspc node -s biggest
+	bspc node -s biggest.local
 
 # scratchpad
-control + grave
-	tdrop -a -m -w 1362 -y 14 -s dropdown termite
+#control + grave
+	#tdrop -a -m -w 1362 -y 14 -s dropdown termite
 
 # }}}
 
@@ -63,9 +63,6 @@ super + {_,shift + }{h,j,k,l}
 super + {minus,equal}
 	bspc node -f {prev,next}.local
 
-super + Tab
-	bspc node -f last.local
-
 # focus the node for the given path jump
 super + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
@@ -75,27 +72,20 @@ super + bracket{left,right}
 	bspc desktop -f {prev,next}.local
 
 # focus last (most recent) desktop
-alt + Tab
+super + Tab
 	bspc desktop -f last.local
 
 # focus next/previous monitor
-super + {Prior,Next}
+super + {Left,Right}
 	bspc monitor -f {prev,next}
 
 # move node to next/previous monitor
-super + shift + {Prior,Next}
+super + shift + {Left,Right}
 	bspc node -m {prev,next}
 
-# focus last (most recent) monitor
-super + grave
-	bspc monitor -f last
-
-# focus last node
-# focus the older or newer node in the focus history
-super + {_,shift + }o
-	bspc wm -h off; \
-	bspc node {older,newer} -f; \
-	bspc wm -h on
+# focus next monitor
+alt + Tab
+	bspc monitor -f next
 
 # send to next unoccupied desktop 
 super + backslash
@@ -107,7 +97,11 @@ super + shift + bracket{left,right}
 
 # focus or send to the given desktop (on the current monitor)
 super + {_,shift + }{1-9}
-	bspc {desktop -f,node -d} $(bspc query -D -m | sed '{1-9}q;d')
+	bspc {desktop -f,node -d} "focused:^{1-9}"
+
+# focus or send to desktop on next monitor
+alt + {_,shift + }{1-9}
+    bspc {desktop -f,node -d} "next:^{1-9}"
 
 # Hide
 super + u
@@ -125,6 +119,10 @@ super + shift + u
 # pseudo_tiled -- centered in tile, but unrestricted size
 super + {t,shift + t,s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# toggle focus between floating, tiled windows
+super + grave
+    bspc node -f next.!same_class.local
 
 # set the node flags
 # locked -- will not close

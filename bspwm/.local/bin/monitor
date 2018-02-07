@@ -1,2 +1,0 @@
-#!/usr/bin/env bash
-xfce-setup "monitor-1" "Arc-Dark" "96" "1"

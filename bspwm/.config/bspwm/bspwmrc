@@ -7,7 +7,7 @@ pgrep sxhkd || sxhkd &
 
 # Fix fullscreen with panels
 #xdo above -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" $(xdo id -n tint2)
-xdo above -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" $(xdo id -n polybar)
+xdo above -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" $(xdo id -n plasmashell)
 
 # Set up monitors
 bspc monitor "DP-1" -d $(printf 'D%01d ' {1..6})
@@ -58,16 +58,19 @@ bspc rule -a 'Chromium:crx_knipolnnllmklapflnccelgolnpehhpl' state=floating stic
 xset r rate 400 40
 
 # Autostart applications
-dropbox start &
+#dropbox start &
+#nitrogen --restore
+#pgrep volumeicon || volumeicon &
+#pgrep nm-applet || nm-applet &
+#duplicati start
+
+# Start panel
+#~/.config/polybar/launch.sh &
+
+## Deprecated
 #pgrep compton || compton &
-nitrogen --restore
-pgrep volumeicon || volumeicon &
 #pgrep light-locker || light-locker &
 #pgrep xfce4-power-manager || xfce4-power-manager &
-pgrep nm-applet || nm-applet &
-duplicati start
-
-## Start panel
+## Panel
 #pgrep xfce4-panel || xfce4-panel
-~/.config/polybar/launch.sh &
 #pgrep tint2 || tint2 &
