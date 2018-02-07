@@ -1,0 +1,13 @@
+#!/bin/bash
+
+QUERY="query=$1"
+shift 1
+
+curl --get \
+    --silent \
+    --data-urlencode "$QUERY" \
+    --data select=DOI \
+    --data rows=1 \
+    https://api.crossref.org/works | \
+    jq '.message.items[0].DOI' | \
+    xargs -I{} doi2bibtex {} $@

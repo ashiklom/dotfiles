@@ -1,0 +1,5 @@
+#!/usr/bin/env Rscript
+f <- file("stdin")
+open(f)
+l <- paste(readLines(f), collapse = "\n")
+styler::style_text(l)
