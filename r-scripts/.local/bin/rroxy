@@ -1,0 +1,11 @@
+#!/usr/bin/env Rscript
+args <- commandArgs(trailingOnly = TRUE)
+if (length(args) == 0) {
+    args <- "."
+}
+for (a in args) {
+  devtools::document(a)
+}
+
+# vim: set filetype=r:
+

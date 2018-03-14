@@ -1,0 +1,16 @@
+#!/usr/bin/env Rscript
+args <- commandArgs(trailingOnly = TRUE)
+if (length(args) > 0) {
+    for (a in args) {
+        if (grepl('/', a)) {
+            message("Installing ", a, " from GitHub")
+            devtools::install_github(a)
+        } else {
+            message("Installing ", a, " from CRAN")
+            install.packages(a)
+        }
+    }
+    message("Done!")
+}
+
+# vim: set filetype=r:

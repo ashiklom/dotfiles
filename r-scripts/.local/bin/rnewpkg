@@ -1,0 +1,5 @@
+#!/usr/bin/env Rscript
+args <- commandArgs(trailingOnly = FALSE)
+devtools::create(path = args)
+
+# vim: set filetype=r:

@@ -1,11 +1,23 @@
-options(repos=structure(c(CRAN="https://cloud.r-project.org")))
+options(repos = structure(c(CRAN = "https://cloud.r-project.org")))
+
+.width <- function(w = Sys.getenv("COLUMNS"), verbose = TRUE) {
+  options(width = as.integer(w))
+  if (verbose) {
+    message("Setting console width to ", getOption("width"))
+  }
+}
 
 if (interactive()) {
-    library(colorout) # For colorized output in terminal emulators
-    library(setwidth) # For automatic update of options('width')
-
-    options(nvimcom.verbose = 1) # To know nvimcom was successfully loaded
-    library(nvimcom)
+    if (!requireNamespace("colorout", quietly = TRUE)) {
+        devtools::install_github("jalvesaq/colorout")
+    }
+    #options(nvimcom.verbose = 1) # To know nvimcom was successfully loaded
+    suppressPackageStartupMessages({
+        library(colorout)   # Color terminal output
+    })
+    if (Sys.getenv("VIMRUNTIME") != "") {
+        library(nvimcom)
+    }
 }
 
 # vim: set syntax=r filetype=r:

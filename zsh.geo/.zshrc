@@ -26,7 +26,7 @@ if [[ -f "$HOME/.zplug/init.zsh" ]]; then
     zstyle 'prezto:*:*' color 'yes'
     zstyle ':prezto:module:editor' key-bindings 'vi'
     zstyle ':prezto:module:editor' dot-expansion 'yes'
-    zstyle ':prezto:module:prompt' theme 'sorin'
+    zstyle ':prezto:module:prompt' theme 'steeef'
 
     # Autostart tmux
     #zstyle ':prezto:module:tmux:auto-start' local 'yes'

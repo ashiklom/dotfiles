@@ -1,5 +1,9 @@
 unalias rm 2>/dev/null
 alias ls='ls --color=auto'
+
 export PATH=$PATH:$HOME/.local/bin
+
+# Ruby gems directory
+export PATH=$PATH:$(ruby -e 'print Gem.user_dir')/bin
 
 # vim: filetype=sh syntax=sh

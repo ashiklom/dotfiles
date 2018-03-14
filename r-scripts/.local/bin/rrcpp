@@ -1,0 +1,7 @@
+#!/usr/bin/env Rscript
+args <- commandArgs(trailingOnly = FALSE)
+if (length(args) == 0) {
+    args <- "."
+}
+Rcpp::compileAttributes(args)
+# vim: set filetype=r:
