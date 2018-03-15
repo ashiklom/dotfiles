@@ -1,4 +1,6 @@
-options(repos = structure(c(CRAN = "https://cloud.r-project.org")))
+options(
+  repos = structure(c(CRAN = "https://cloud.r-project.org"))
+)
 
 .width <- function(w = Sys.getenv("COLUMNS"), verbose = TRUE) {
   options(width = as.integer(w))
