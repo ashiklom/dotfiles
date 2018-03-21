@@ -66,3 +66,10 @@ fi
 
 # added by travis gem
 [ -f /home/ashiklom/.travis/travis.sh ] && source /home/ashiklom/.travis/travis.sh
+# PEcAn VM-specific settings
+#
+
+if [ $(hostname) = 'pecan.vm' ]; then
+    setopt complete_aliases
+    export PATH=$PATH:/snap/bin/
+fi
