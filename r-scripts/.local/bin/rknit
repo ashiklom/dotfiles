@@ -1,0 +1,12 @@
+#!/usr/bin/env Rscript
+args <- commandArgs(trailingOnly = TRUE)
+
+if (!length(args) > 0) {
+  stop("At least one argument required")
+}
+
+for (a in args) {
+  knitr::knit(a)
+}
+
+# vim: set filetype=r:

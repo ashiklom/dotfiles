@@ -1,0 +1,12 @@
+#!/usr/bin/env Rscript
+args <- commandArgs(trailingOnly = TRUE)
+if (!length(args) > 0) {
+  args <- "dev"
+}
+stopifnot(all(args %in% c("patch", "minor", "major", "dev")))
+
+d <- desc::description$new()
+d$bump_version(args)
+d$write()
+
+# vim: set filetype=r:
