@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+remote=$1
+socket=${2:-tunnel}
+
+echo "Opening tunnel to $remote in file $socket"
+echo "To close, run:"
+echo "ssh -S $socket -O exit $remote"
+ssh -nNf -o ControlMaster=yes -S $socket $remote
