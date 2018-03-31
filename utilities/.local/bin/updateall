@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Update Arch Linux packages
+pikaur -Syu --noconfirm
+
+# Update R packages
+Rscript -e "update.packages('ask = FALSE, checkBuilt = TRUE')"
+
+# Update vim plugins
+nvim +PlugUpdate +qall
+
+# Shutdown
+if [[ $1 = "-s" ]]; then
+    shutdown now
+fi
