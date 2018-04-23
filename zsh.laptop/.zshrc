@@ -44,6 +44,10 @@ if (hub --version &> /dev/null); then
     alias git='hub'
 fi
 
+if (exa --version &> /dev/null); then
+    alias ls='exa'
+fi
+
 source "$MY_DOT_DIR/shrc-aliases/pbcopy.sh"
 
 # pecan server setup
