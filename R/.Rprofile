@@ -1,12 +1,13 @@
 options(
-  repos = structure(c(CRAN = "https://cloud.r-project.org"))
+  repos = structure(c(CRAN = "https://cloud.r-project.org")),
+  setWidthOnResize = TRUE
 )
 
 .width <- function(w = Sys.getenv("COLUMNS"), verbose = TRUE) {
-  options(width = as.integer(w))
   if (verbose) {
-    message("Setting console width to ", getOption("width"))
+    message("Setting console width to ", w)
   }
+  options(width = as.integer(w))
 }
 
 if (interactive()) {
