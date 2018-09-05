@@ -2,8 +2,8 @@
 
 getdoi() {
     while (( "$#" )); do
-        URL=$1
-        if [[ $2 == "-k" ]]; then
+        URL="$1"
+        if [[ "$2" == "-k" ]]; then
             KEY="$3"
         else
             KEY=""
@@ -11,22 +11,22 @@ getdoi() {
 
         slashcode=%2F
         slashstring=/
-        URL=${URL//$slashcode/$slashstring}
+        URL="${URL//$slashcode/$slashstring}"
 
         if [[ ! "$URL" =~ doi\.org ]]; then
-            URL=doi.org/${URL}
+            URL="doi.org/${URL}"
         fi
         if [[ ! "$URL" =~ ^http ]]; then
-            URL=https://${URL}
+            URL="https://${URL}"
         fi
 
         CURL="curl --silent -LH 'Accept: application/x-bibtex' '$URL'"
 
         if [[ -n "$KEY" ]]; then
-            eval $CURL | sed '1 s|{.*,|{'"$KEY"',|'
+            eval "$CURL" | sed '1 s|{.*,|{'"$KEY"',|'
             shift 3
         else
-            eval $CURL
+            eval "$CURL"
             shift 1
         fi
 
