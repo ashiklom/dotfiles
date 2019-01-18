@@ -24,25 +24,25 @@ shift + alt - l : chunkc tiling::window --swap east
 
 # Desktops
 ## Select
-alt - p : chunkc tiling::desktop --focus prev
-alt - n : chunkc tiling:desktop --focus next
 alt - 1 : chunkc tiling::desktop --focus 1
 alt - 2 : chunkc tiling::desktop --focus 2
 alt - 3 : chunkc tiling::desktop --focus 3
 alt - 4 : chunkc tiling::desktop --focus 4
 alt - 5 : chunkc tiling::desktop --focus 5
 alt - 6 : chunkc tiling::desktop --focus 6
+# alt - p : chunkc tiling::desktop --focus prev
+# alt - n : chunkc tiling:desktop --focus next
 # cmd + alt - x : chunkc tiling::desktop --focus $(chunkc get _last_active_desktop)
 
 ### Send window to
-shift + alt - p : chunkc tiling::window --send-to-desktop prev
-shift + alt - n : chunkc tiling::window --send-to-desktop next
 shift + alt - 1 : chunkc tiling::window --send-to-desktop 1
 shift + alt - 2 : chunkc tiling::window --send-to-desktop 2
 shift + alt - 3 : chunkc tiling::window --send-to-desktop 3
 shift + alt - 4 : chunkc tiling::window --send-to-desktop 4
 shift + alt - 5 : chunkc tiling::window --send-to-desktop 5
 shift + alt - 6 : chunkc tiling::window --send-to-desktop 6
+# shift + alt - p : chunkc tiling::window --send-to-desktop prev
+# shift + alt - n : chunkc tiling::window --send-to-desktop next
 # shift + alt - 7 : chunkc tiling::window --send-to-desktop 7
 # shift + alt - x : chunkc tiling::window --send-to-desktop $(chunkc get _last_active_desktop)
 
@@ -70,7 +70,7 @@ alt - y : chunkc tiling::desktop --mirror vertical
 alt - x : chunkc tiling::desktop --mirror horizontal
 
 # toggle desktop offset
-alt - a : chunkc tiling::desktop --toggle offset
+# alt - a : chunkc tiling::desktop --toggle offset
 
 # toggle window fullscreen
 alt - f : chunkc tiling::window --toggle fullscreen
