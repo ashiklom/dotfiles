@@ -39,29 +39,15 @@ fi
 # NOTE: `fzf` (below) will override this if installed
 bindkey '^r' history-incremental-search-backward
 
-# source "$MY_DOT_DIR/sh.common/common"
-
-# export VISUAL=${VISUAL:-nvim}
-# alias vim='nvim'
-
 if (hub --version &> /dev/null); then
     alias git='hub'
 fi
 
 alias ls="ls -G"
 
-if (exa --version &> /dev/null); then
-    alias ls='exa'
-fi
-
 # source "$MY_DOT_DIR/shrc-aliases/pbcopy.sh"
 alias edit='emacsclient -n'
 alias ghash="git log --pretty=format:'%h' -n 1"
-
-# pecan server setup
-if [[ "$(hostname | grep 'pecan')" ]]; then
-    source "$MY_DOT_DIR/shrc-aliases/ssh-agent.sh"
-fi
 
 # fzf
 if [[ -f ~/.fzf.zsh ]]; then
@@ -72,10 +58,6 @@ if [[ -d "$HOME/.cabal/bin" ]]; then
     export PATH=$PATH:$HOME/.cabal/bin
 fi
 
-#if [[ -z "$TMUX" ]] && [[ "$TERM" != "linux" ]]; then
-    #tmux new-session
-#fi
-
 # Local executables
 export PATH="$PATH":"${HOME}/.local/bin"
 
@@ -85,10 +67,3 @@ export PATH="$GEM_HOME/bin:$PATH"
 
 # added by travis gem
 [ -f /home/ashiklom/.travis/travis.sh ] && source /home/ashiklom/.travis/travis.sh
-# PEcAn VM-specific settings
-#
-
-if [ $(hostname) = 'pecan.vm' ]; then
-    setopt complete_aliases
-    export PATH=$PATH:/snap/bin/
-fi
