@@ -35,6 +35,10 @@ if [[ -f "$HOME/.zplug/init.zsh" ]]; then
     zplug load
 fi
 
+# Add incremental search key
+# NOTE: `fzf` (below) will override this if installed
+bindkey '^r' history-incremental-search-backward
+
 # source "$MY_DOT_DIR/sh.common/common"
 
 # export VISUAL=${VISUAL:-nvim}
