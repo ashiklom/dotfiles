@@ -44,6 +44,8 @@ if (hub --version &> /dev/null); then
     alias git='hub'
 fi
 
+alias ls="ls -G"
+
 if (exa --version &> /dev/null); then
     alias ls='exa'
 fi
