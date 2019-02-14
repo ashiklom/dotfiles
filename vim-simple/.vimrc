@@ -6,6 +6,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
+Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 
@@ -39,3 +40,4 @@ map K <Nop>
 
 nmap <leader>; <plug>NERDCommenterToggle
 nmap <silent> <leader>gs :Gstatus<CR>
+nmap <silent> <leader>gg :GitGutter<CR>
