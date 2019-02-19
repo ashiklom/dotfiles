@@ -39,5 +39,7 @@ map Q <Nop>
 map K <Nop>
 
 nmap <leader>; <plug>NERDCommenterToggle
+vmap <leader>; <plug>NERDCommenterToggle
+
 nmap <silent> <leader>gs :Gstatus<CR>
 nmap <silent> <leader>gg :GitGutter<CR>
