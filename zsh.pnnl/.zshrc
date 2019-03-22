@@ -43,11 +43,16 @@ if (hub --version &> /dev/null); then
     alias git='hub'
 fi
 
-alias ls="ls -G"
-
 # source "$MY_DOT_DIR/shrc-aliases/pbcopy.sh"
 alias edit='emacsclient -n'
 alias ghash="git log --pretty=format:'%h' -n 1"
+
+alias ls='ls -G'
+
+# pecan server setup
+if [[ "$(hostname | grep 'pecan')" ]]; then
+    source "$MY_DOT_DIR/shrc-aliases/ssh-agent.sh"
+fi
 
 # fzf
 if [[ -f ~/.fzf.zsh ]]; then
