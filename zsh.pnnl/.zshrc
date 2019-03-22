@@ -14,21 +14,27 @@ if [[ -f "$HOME/.zplug/init.zsh" ]]; then
 
     zplug "zdharma/fast-syntax-highlighting"
 
-    zplug "modules/editor", from:prezto
     zplug "modules/directory", from:prezto
     zplug "modules/completion", from:prezto
     zplug "modules/git", from:prezto
     zplug "modules/utility", from:prezto
-    zplug "modules/prompt", from:prezto
-    #zplug "modules/tmux", from:prezto
     zplug "zuxfoucault/colored-man-pages_mod"
+    zplug "modules/prompt", from:prezto
 
-    zstyle 'prezto:*:*' color 'yes'
-    zstyle ':prezto:module:editor' key-bindings 'vi'
-    zstyle ':prezto:module:editor' dot-expansion 'yes'
-    zstyle ':prezto:module:prompt' theme 'sorin'
+    # Use a simpler configuration for Emacs
+    if [[ -z "${EMACS}" ]]; then
+        zstyle 'prezto:*:*' color 'yes'
+        zstyle ':prezto:module:prompt' theme 'sorin'
+
+        zplug "modules/editor", from:prezto
+        zstyle ':prezto:module:editor' key-bindings 'vi'
+        zstyle ':prezto:module:editor' dot-expansion 'yes'
+    else
+        zstyle ':prezto:module:prompt' theme 'suse'
+    fi
 
     # Autostart tmux
+    #zplug "modules/tmux", from:prezto
     #zstyle ':prezto:module:tmux:auto-start' local 'yes'
 
     zplug check || zplug install
