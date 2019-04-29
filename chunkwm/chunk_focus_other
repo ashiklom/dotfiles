@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# Window list, not including current window
+W=${1:-1}
+T=$((W + 1))
+OTHER_WINDOWS=$(chunkc tiling::query --desktop windows | tail -n +$T)
+if [[ -n "$OTHER_WINDOWS" ]]; then
+    chunkc tiling::window --focus $(echo "$OTHER_WINDOWS" | head -n1 | cut -f 1 -d ,)
+fi

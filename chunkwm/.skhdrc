@@ -255,4 +255,10 @@ ctrl + alt - a : chunkc tiling::desktop --layout bsp
 ctrl + alt - s : chunkc tiling::desktop --layout monocle
 ctrl + alt - d : chunkc tiling::desktop --layout float
 
+# Focus specific window 
+ctrl + alt - 1 : ~/dotfiles/chunkwm/chunk_focus_other 1
+ctrl + alt - 2 : ~/dotfiles/chunkwm/chunk_focus_other 2
+ctrl + alt - 3 : ~/dotfiles/chunkwm/chunk_focus_other 3
+ctrl + alt - o : ~/dotfiles/chunkwm/chunk_focus_other
+
 # ctrl + alt - w : chunkc tiling::desktop --deserialize ~/.chunkwm_layouts/dev_1
