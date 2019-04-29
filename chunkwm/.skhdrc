@@ -1,5 +1,8 @@
 # -*- truncate-lines: t -*-
 
+# Reload skhd config
+ctrl + alt - r : skhd --reload
+
 # Windows
 ## Focusing
 alt - h : chunkc tiling::window --focus west
