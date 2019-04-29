@@ -149,7 +149,9 @@ chunkc tiling::rule --owner \"Skype for Business\" --state float &
 chunkc tiling::rule --owner \"Preview\" --state float &
 chunkc tiling::rule --owner \"Model Interface\" --state float &
 chunkc tiling::rule --owner \"AnyConnect\" --state float &
+chunkc tiling::rule --owner \"Activity Monitor\" --state float &
+
+chunkc tiling::rule --name \"^Quartz\" --state float &
 
 # Tiling windows with exceptions
-
 chunkc tiling::rule --owner Emacs --except "^$" --state tile &
