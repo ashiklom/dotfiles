@@ -78,3 +78,5 @@ export PATH="$GEM_HOME/bin:$PATH"
 
 # added by travis gem
 [ -f /home/ashiklom/.travis/travis.sh ] && source /home/ashiklom/.travis/travis.sh
+
+alias rhb=/usr/local/Cellar/r/3.5.3/bin/R
