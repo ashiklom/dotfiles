@@ -10,8 +10,12 @@ alt - j : chunkc tiling::window --focus south
 alt - k : chunkc tiling::window --focus north
 alt - l : chunkc tiling::window --focus east
 
-alt - tab : chunkc tiling::window --focus prev
-shift + alt - tab : chunkc tiling::window --focus next
+# Other window (including floating windows)
+alt - tab : ~/dotfiles/chunkwm/chunk_focus_other
+shift + alt - tab : ~/dotfiles/chunkwm/chunk_focus_other 2
+
+# alt - tab : chunkc tiling::window --focus prev
+# shift + alt - tab : chunkc tiling::window --focus next
 
 ## Swapping
 shift + alt - h : chunkc tiling::window --swap west
