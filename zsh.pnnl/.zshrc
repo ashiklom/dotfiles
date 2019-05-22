@@ -50,7 +50,7 @@ if (hub --version &> /dev/null); then
 fi
 
 # source "$MY_DOT_DIR/shrc-aliases/pbcopy.sh"
-alias edit='emacsclient -n -c'
+alias edit='emacsclient -n -c --alternate-editor vim'
 alias ghash="git log --pretty=format:'%h' -n 1"
 
 alias ls='ls -G'
