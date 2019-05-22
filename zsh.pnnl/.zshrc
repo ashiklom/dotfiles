@@ -50,7 +50,7 @@ if (hub --version &> /dev/null); then
 fi
 
 # source "$MY_DOT_DIR/shrc-aliases/pbcopy.sh"
-alias edit='emacsclient -n'
+alias edit='emacsclient -n -c'
 alias ghash="git log --pretty=format:'%h' -n 1"
 
 alias ls='ls -G'
@@ -79,4 +79,8 @@ export PATH="$GEM_HOME/bin:$PATH"
 # added by travis gem
 [ -f /home/ashiklom/.travis/travis.sh ] && source /home/ashiklom/.travis/travis.sh
 
-alias rhb=/usr/local/Cellar/r/3.5.3/bin/R
+if [[ -n $(find /usr/local/Cellar -name r -depth 1) ]]; then
+    RHB_DIR=$(find /usr/local/Cellar/r -depth 1)
+    alias rhb=${RHB_DIR}/bin/R
+    alias Rhbscript=${RHB_DIR}/bin/Rscript
+fi
