@@ -13,7 +13,7 @@ if (length(args) > 0 && args == "test") {
   problem_pkgs <- c("quantreg", "SparseM", "igraph", "stringi",
                     "Rcpp", "RcppEigen", "RcppArmadillo",
                     "TMB", "TTR", "robustbase", "timereg",
-                    "rgdal")
+                    "rgdal", "minpack.lm")
   all_pkgs <- rownames(installed.packages())
   exclude_pkgs <- c("tcltk")
   pkgs <- setdiff(c(problem_pkgs, setdiff(all_pkgs, problem_pkgs)),
@@ -21,6 +21,8 @@ if (length(args) > 0 && args == "test") {
   writeLines(pkgs, "~/.R/pkgs_list")
   pb <- txtProgressBar(min = 1, max = length(pkgs), style = 3)
   i <- 0
+  ## libpaths <- sprintf("(%s)", paste(.libPaths(), collapse = "|"))
+  ## libpaths <- gsub("\\.", "\\\\.", libpaths)
   for (p in pkgs) {
     i <- i + 1
     setTxtProgressBar(pb, i)
@@ -31,16 +33,18 @@ if (length(args) > 0 && args == "test") {
     if (!(p %in% err)) {
       message("Hit the following error loading package ", p, ":\n", err)
       if (grepl("no package called", err)) {
-        next
+        # Continue to re-installing package
+        invisible(TRUE)
       } else if (grepl("unable to load shared object", err)) {
-        bad_so_full <- regexpr(
-          ".*? load shared object '.*?/library/([[:alnum:]]+)/.*\\.so'.*",
+        bad_so_full <- regexec(
+          ## paste0(".*? load shared object '",
+          ##        libpaths,
+          ##        "([[:alnum:]]+)/.*\\.so'.*"),
+          ".*? load shared object '/Users/shik544/R/([[:alnum:].]+)/.*\\.so'.*",
           err,
           perl = TRUE
         )
-        start <- attr(bad_so_full, "capture.start")
-        end <- start + attr(bad_so_full, "capture.length") - 1
-        bad_so <- substr(err, start, end)
+        bad_so <- regmatches(err, bad_so_full)[[1]][[2]]
         message("Problem with dependent library ", bad_so,
                 ". Trying to reinstall.")
         install.packages(bad_so)
