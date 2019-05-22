@@ -1,0 +1,55 @@
+#!/usr/bin/env Rscript
+
+update.packages(ask = FALSE, checkBuilt = TRUE, Ncpus = parallel::detectCores())
+
+## args <- commandArgs(trailingOnly = TRUE)[1]
+args <- "test"
+
+if (length(args) > 0 && args == "test") {
+  if (!requireNamespace("callr", quietly = TRUE)) {
+    install.packages("callr")
+  }
+  # Compiled packages on which many others depend
+  problem_pkgs <- c("quantreg", "SparseM", "igraph", "stringi",
+                    "Rcpp", "RcppEigen", "RcppArmadillo",
+                    "TMB", "TTR", "robustbase", "timereg",
+                    "rgdal")
+  all_pkgs <- rownames(installed.packages())
+  exclude_pkgs <- c("tcltk")
+  pkgs <- setdiff(c(problem_pkgs, setdiff(all_pkgs, problem_pkgs)),
+                  exclude_pkgs)
+  writeLines(pkgs, "~/.R/pkgs_list")
+  pb <- txtProgressBar(min = 1, max = length(pkgs), style = 3)
+  i <- 0
+  for (p in pkgs) {
+    i <- i + 1
+    setTxtProgressBar(pb, i)
+    err <- callr::r(function(p) tryCatch(
+      library(p, character.only = TRUE, quietly = TRUE),
+      error = function(e) conditionMessage(e)
+    ), list(p = p))
+    if (!(p %in% err)) {
+      message("Hit the following error loading package ", p, ":\n", err)
+      if (grepl("no package called", err)) {
+        next
+      } else if (grepl("unable to load shared object", err)) {
+        bad_so_full <- regexpr(
+          ".*? load shared object '.*?/library/([[:alnum:]]+)/.*\\.so'.*",
+          err,
+          perl = TRUE
+        )
+        start <- attr(bad_so_full, "capture.start")
+        end <- start + attr(bad_so_full, "capture.length") - 1
+        bad_so <- substr(err, start, end)
+        message("Problem with dependent library ", bad_so,
+                ". Trying to reinstall.")
+        install.packages(bad_so)
+      }
+      if (bad_so != p) {
+        message("Reinstalling package ", p)
+        install.packages(p)
+      }
+    }
+  }
+  close(pb)
+}
