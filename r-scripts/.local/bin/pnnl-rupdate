@@ -1,0 +1,61 @@
+#!/usr/bin/env Rscript
+
+arg <- commandArgs(trailingOnly = TRUE)
+stopifnot(length(arg) <= 1)
+test <- length(arg) == 1 && arg == "test"
+
+# Update Makevars
+makevars_file <- "~/.R/Makevars"
+mv <- readLines(makevars_file)
+iflib <- grep("^FLIBS", mv)
+stopifnot(length(iflib) == 1)
+flib <- mv[[iflib]]
+gcc <- normalizePath(system2(
+  "gcc",
+  "-print-file-name=libgcc.a",
+  stdout = TRUE
+), mustWork = TRUE)
+gcc <- gsub("libgcc.a", "", gcc)
+gfortran <- normalizePath(system2(
+  "gcc",
+  "-print-file-name=libgfortran.a",
+  stdout = TRUE
+), mustWork = TRUE)
+gfortran <- gsub("libgfortran.a", "", gfortran)
+new_flib <- sprintf(
+  "FLIBS = -L%s -L%s -lgfortran -lquadmath -lm",
+  gcc, gfortran
+)
+mv[[iflib]] <- new_flib
+writeLines(mv, makevars_file)
+
+update.packages(
+  ask = FALSE,
+  checkBuilt = TRUE,
+  Ncpus = parallel::detectCores(),
+  lib.loc = .libPaths()[[1]]
+)
+
+if (test) {
+  stopifnot(requireNamespace("callr"))
+  pkgs <- rownames(installed.packages())
+  pkgs <- setdiff(pkgs, "tcltk")
+  pb <- txtProgressBar(1, length(pkgs), style = 3)
+  for (i in seq_along(pkgs)) {
+    setTxtProgressBar(pb, i)
+    p <- pkgs[[i]]
+    tryCatch(
+      suppressPackageStartupMessages(
+        callr::r(function(p) library(
+          p,
+          character.only = TRUE,
+          quietly = TRUE
+        ), list(p = p))
+      ),
+      error = function(e) {
+        message("Failed to load package ", p, " with error: ", conditionMessage(e), "\n Re-installing...")
+        install.packages(p)
+    })
+  }
+  close(pb)
+}
