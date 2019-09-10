@@ -74,7 +74,15 @@ export PATH="$PATH":"${HOME}/.local/bin"
 
 # Local Ruby gems (without sudo)
 export GEM_HOME=~/.gem
-export PATH="$GEM_HOME/bin:$PATH"
+if [[ -f $GEM_HOME ]]; then
+    export PATH="$GEM_HOME/bin:$PATH"
+fi
+
+# `rt` package -- Command-line utils for R
+export RT_PATH=~/R/rt/bin
+if [[ -f $RT_PATH/rupdate ]]; then
+    export PATH=$PATH:$RT_PATH
+fi
 
 # added by travis gem
 [ -f /home/ashiklom/.travis/travis.sh ] && source /home/ashiklom/.travis/travis.sh
