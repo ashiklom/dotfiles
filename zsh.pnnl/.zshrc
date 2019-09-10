@@ -92,3 +92,9 @@ if [[ -n $(find /usr/local/Cellar -name r -depth 1) ]]; then
     alias rhb=${RHB_DIR}/bin/R
     alias Rhbscript=${RHB_DIR}/bin/Rscript
 fi
+
+# Doom emacs
+DOOMPATH=~/.emacs.d/bin
+if [[ -d $DOOMPATH ]]; then
+    export PATH=$PATH:$DOOMPATH
+fi
