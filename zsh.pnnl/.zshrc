@@ -82,6 +82,7 @@ fi
 export RT_PATH=~/R/rt/bin
 if [[ -f $RT_PATH/rupdate ]]; then
     export PATH=$PATH:$RT_PATH
+    alias rtdoc=$RT_PATH/rdoc
 fi
 
 # added by travis gem
@@ -97,4 +98,19 @@ fi
 DOOMPATH=~/.emacs.d/bin
 if [[ -d $DOOMPATH ]]; then
     export PATH=$PATH:$DOOMPATH
+fi
+
+# Add Python local package paths (Python 3 preferred)
+PYTHON3="$HOME/Library/Python/3.7/bin"
+if [[ -d "$PYTHON3" ]]; then
+    export PATH=$PATH:"$PYTHON3"
+fi
+PYTHON2="$HOME/Library/Python/2.7/bin"
+if [[ -d "$PYTHON2" ]]; then
+    export PATH=$PATH:"$PYTHON2"
+fi
+
+# Use neovim for vim
+if command -v nvim 2>/dev/null; then
+    alias vim=nvim
 fi
