@@ -85,13 +85,8 @@ if [[ -f $RT_PATH/rupdate ]]; then
     alias rtdoc=$RT_PATH/rdoc
 fi
 
-# added by travis gem
-[ -f /home/ashiklom/.travis/travis.sh ] && source /home/ashiklom/.travis/travis.sh
-
-if [[ -n $(find /usr/local/Cellar -name r -depth 1) ]]; then
-    RHB_DIR=$(find /usr/local/Cellar/r -depth 1)
-    alias rhb=${RHB_DIR}/bin/R
-    alias Rhbscript=${RHB_DIR}/bin/Rscript
+if [[ -f ~/.travis/travis.sh ]]; then
+    source /home/ashiklom/.travis/travis.sh
 fi
 
 # Doom emacs
@@ -111,6 +106,6 @@ if [[ -d "$PYTHON2" ]]; then
 fi
 
 # Use neovim for vim
-if command -v nvim 2>/dev/null; then
+if command -v nvim >/dev/null; then
     alias vim=nvim
 fi
