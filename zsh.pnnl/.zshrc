@@ -37,7 +37,7 @@ if [[ -f "$HOME/.zplug/init.zsh" ]]; then
     #zplug "modules/tmux", from:prezto
     #zstyle ':prezto:module:tmux:auto-start' local 'yes'
 
-    zplug check || zplug install
+    #zplug check || zplug install
     zplug load
 fi
 
@@ -50,7 +50,6 @@ if (hub --version &> /dev/null); then
 fi
 
 # source "$MY_DOT_DIR/shrc-aliases/pbcopy.sh"
-alias edit='emacsclient -n -c --alternate-editor vim'
 alias ghash="git log --pretty=format:'%h' -n 1"
 
 alias ls='ls -G'
@@ -61,8 +60,8 @@ if [[ "$(hostname | grep 'pecan')" ]]; then
 fi
 
 # fzf
-if [[ -f ~/.fzf.zsh ]]; then
-    source ~/.fzf.zsh
+if [[ -f $HOME/.fzf.zsh ]]; then
+    source $HOME/.fzf.zsh
 fi
 
 if [[ -d "$HOME/.cabal/bin" ]]; then
@@ -88,6 +87,10 @@ fi
 if [[ -f ~/.travis/travis.sh ]]; then
     source /home/ashiklom/.travis/travis.sh
 fi
+# Local Python packages
+# Prefer Python 3.7, but add 2.7 as well
+export PYTHON_ROOT="${HOME}/Library/Python"
+export PATH="$PATH:${PYTHON_ROOT}/3.7/bin:${PYTHON_ROOT}/2.7/bin:"
 
 # Doom emacs
 DOOMPATH=~/.emacs.d/bin
@@ -108,4 +111,8 @@ fi
 # Use neovim for vim
 if command -v nvim >/dev/null; then
     alias vim=nvim
+fi
+
+if [[ -d "$HOME/.emacs.d/bin" ]]; then
+    export PATH=$PATH:~/.emacs.d/bin
 fi
