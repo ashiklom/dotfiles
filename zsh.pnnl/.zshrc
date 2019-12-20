@@ -37,7 +37,7 @@ if [[ -f "$HOME/.zplug/init.zsh" ]]; then
     #zplug "modules/tmux", from:prezto
     #zstyle ':prezto:module:tmux:auto-start' local 'yes'
 
-    #zplug check || zplug install
+    zplug check || zplug install
     zplug load
 fi
 
