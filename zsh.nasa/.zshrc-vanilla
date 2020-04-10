@@ -1,0 +1,39 @@
+#!/usr/bin/env zsh
+
+alias pivssh='ssh -A -o PKCS11Provider=/usr/lib/ssh-keychain.dylib'
+
+PATH="${PATH}:${HOME}/.local/bin"
+PATH="${PATH}:${HOME}/.emacs.d/bin"
+PATH="${PATH}:${HOME}/Library/Python/3.7/bin"
+PATH="${PATH}:${HOME}/Applications/Emacs.app/Contents/MacOS/bin"
+# PATH="${PATH}:${HOME}/opt/anaconda3/bin"
+
+alias ls="ls -G"
+
+PATH=${PATH}:${HOME}/src/zsh-git-prompt/src/.bin
+GIT_PROMPT_EXECUTABLE="haskell"
+source ~/src/zsh-git-prompt/zshrc.sh
+PROMPT='%B%m@%~%b$(git_super_status)%# '
+
+export PATH
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/ashiklom/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/ashiklom/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/ashiklom/opt/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/ashiklom/opt/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+# De-activate conda by default
+conda deactivate
+
+# Allow pyvenv to access conda environments
+export WORKON_HOME="/Users/ashiklom/opt/anaconda3/envs/"
