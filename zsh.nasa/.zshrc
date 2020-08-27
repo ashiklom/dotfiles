@@ -1,7 +1,5 @@
 #!/usr/bin/env zsh
 
-alias pivssh='ssh -A -o PKCS11Provider=/usr/lib/ssh-keychain.dylib'
-
 if [[ -f "$HOME/.profile" ]]; then
     source "$HOME/.profile"
 fi
@@ -100,7 +98,7 @@ fi
 # Local Python packages
 # Prefer Python 3.7, but add 2.7 as well
 export PYTHON_ROOT="${HOME}/Library/Python"
-export PATH="$PATH:${PYTHON_ROOT}/3.7/bin:${PYTHON_ROOT}/2.7/bin:"
+export PATH="$PATH:${PYTHON_ROOT}/3.8/bin:${PYTHON_ROOT}/2.7/bin:"
 
 # Doom emacs
 DOOMPATH=~/.emacs.d/bin
@@ -132,6 +130,10 @@ if ! command -v emacs >/dev/null ; then
     export PATH=$PATH:~/Applications/Emacs.app/Contents/MacOS:~/Applications/Emacs.app/Contents/MacOS/bin
 fi
 
+if command -v gman > /dev/null ; then
+    alias man=gman
+fi
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/Users/ashiklom/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -152,3 +154,5 @@ conda deactivate
 
 # Allow pyvenv to access conda environments
 export WORKON_HOME="/Users/ashiklom/opt/anaconda3/envs/"
+
+alias unfreeze='pkill -SIGUSR2 emacs'
