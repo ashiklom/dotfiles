@@ -1,7 +1,15 @@
 #!/bin/bash
+# Perform a crossref search for the given string and return a bibtex entry of
+# the first result
 
 QUERY="query=$1"
 shift 1
+
+if (which doi2bibtex &> /dev/null); then
+  DOI2BIBTEX="doi2bibtex"
+else
+  DOI2BIBTEX="$HOME/dotfiles/utilities/.local/bin/doi2bibtex"
+fi
 
 curl --get \
     --silent \
@@ -10,4 +18,4 @@ curl --get \
     --data rows=1 \
     https://api.crossref.org/works | \
     jq '.message.items[0].DOI' | \
-    xargs -I{} doi2bibtex {} $@
+    xargs -I{} "$DOI2BIBTEX" {} "$@"
