@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+osascript \
+     -e 'tell app "iTerm2"' \
+     -e 'tell current window' \
+     -e 'tell current session' \
+     -e "write contents of file \"$1\"" \
+     -e 'end tell' \
+     -e 'end tell' \
+     -e 'end tell'

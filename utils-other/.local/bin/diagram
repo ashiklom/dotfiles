@@ -1,0 +1,18 @@
+#!/usr/bin/env Rscript
+
+requireNamespace("DiagrammeR")
+requireNamespace("tools")
+
+argv <- commandArgs(trailingOnly = TRUE)
+infile <- argv[1]
+stopifnot(file.exists(infile))
+txt <- paste(readLines(infile), collapse = "\n")
+outfile <- argv[2]
+if (is.na(outfile)) {
+  outfile <- paste0(tools::file_path_sans_ext(infile), ".png")
+  message("Saving result to ", outfile)
+}
+graph <- DiagrammeR::DiagrammeR(txt)
+DiagrammeR::export_graph(txt, outfile)
+
+# vim: set filetype=r :

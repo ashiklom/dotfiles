@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+task "$1" ann -- "$(fd . ~/inbox | fzf)"

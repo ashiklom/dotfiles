@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+
+PROJECT=${PWD##*/}
+
+docker-compose up -d postgres
+echo "Sleeping to allow Postgres to start..."
+sleep 10
+docker run --rm --network ${PROJECT}_pecan pecan/db
+docker-compose run bety user ashiklom admin "Alexey Shiklomanov" "alexey.shiklomanov@gmail.com" 1 1
+docker-compose run bety user carya illinois "PEcAn tree" "notreal@fake.com" 1 1
+docker run -it --rm --network ${PROJECT}_pecan --volume ${PROJECT}_pecan:/data --env FQDN=docker pecan/data:develop

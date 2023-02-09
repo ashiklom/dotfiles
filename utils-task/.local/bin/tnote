@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if [[ -n "$2" ]]; then
+  nvim "$HOME/notes/$2"
+  task "$1" annotate -- "$HOME/notes/$2"
+else
+  task "$1" annotate -- "$(fd . ~/notes | fzf)"
+fi

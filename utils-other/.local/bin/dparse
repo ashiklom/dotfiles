@@ -1,0 +1,10 @@
+#!/usr/bin/env python3
+
+from dateparser import parse
+import sys
+
+assert len(sys.argv) == 2, "Missing argument"
+
+instring = sys.argv[1]
+date = parse(instring, settings = {"PREFER_DATES_FROM": "future"})
+print(date.isoformat())
