@@ -69,41 +69,8 @@ if [[ -f $HOME/.fzf.zsh ]]; then
     source $HOME/.fzf.zsh
 fi
 
-if [[ -d "$HOME/.cabal/bin" ]]; then
-    export PATH=$PATH:$HOME/.cabal/bin
-fi
-
-# Local executables
-PATH="$PATH":"${HOME}/.local/bin"
-
-# Local Ruby gems (without sudo)
-GEM_HOME=~/.gem
-if [[ -f $GEM_HOME ]]; then
-    export PATH="$GEM_HOME/bin:$PATH"
-    export GEM_HOME
-fi
-
-# `rt` package -- Command-line utils for R
-RT_PATH=~/R/rt/bin
-if [[ -f $RT_PATH/rupdate ]]; then
-    export PATH=$PATH:$RT_PATH
-    alias rtdoc=$RT_PATH/rdoc
-    export RT_PATH
-fi
-
 if [[ -f ~/.travis/travis.sh ]]; then
     source /home/ashiklom/.travis/travis.sh
-fi
-
-# Local Python packages
-# Prefer Python 3.7, but add 2.7 as well
-export PYTHON_ROOT="${HOME}/Library/Python"
-export PATH="$PATH:${PYTHON_ROOT}/3.8/bin:${PYTHON_ROOT}/2.7/bin:"
-
-# Doom emacs
-DOOMPATH=~/.emacs.d/bin
-if [[ -d $DOOMPATH ]]; then
-    export PATH=$PATH:$DOOMPATH
 fi
 
 # Add Python local package paths (Python 3 preferred)
@@ -120,14 +87,6 @@ fi
 # Use neovim for vim
 if command -v nvim >/dev/null; then
     alias vim=nvim
-fi
-
-if [[ -d "$HOME/.emacs.d/bin" ]]; then
-    export PATH=$PATH:~/.emacs.d/bin
-fi
-
-if ! command -v emacs >/dev/null ; then
-    export PATH=$PATH:~/Applications/Emacs.app/Contents/MacOS:~/Applications/Emacs.app/Contents/MacOS/bin
 fi
 
 if command -v gman > /dev/null ; then
@@ -156,3 +115,19 @@ conda deactivate
 export WORKON_HOME="/Users/ashiklom/opt/anaconda3/envs/"
 
 alias unfreeze='pkill -SIGUSR2 emacs'
+
+EMACS="/Users/ashiklom/Applications/Emacs.app/Contents/MacOS/Emacs"
+if [ -f "$EMACS" ]; then
+    alias emacs="$EMACS"
+fi
+unalias rm
+
+if [ -f "$HOME/src/aws-mfa" ]; then
+    alias aws-mfa='. ~/src/aws-mfa'
+    alias eis-compute-stop='aws ec2 stop-instances --instance-ids i-01372ccb6a8b5a762'
+    alias eis-compute-start='aws ec2 start-instances --instance-ids i-01372ccb6a8b5a762'
+fi
+
+if [ -f "$HOME/.aws-auth" ]; then
+    source "$HOME/.aws-auth"
+fi
