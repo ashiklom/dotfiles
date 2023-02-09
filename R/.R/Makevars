@@ -1,0 +1,17 @@
+# # Configuration for MacOS 
+# CC = clang
+# CXX = clang++ -std=gnu++11
+# CXX98 = clang++
+# CXX11 = clang++
+# CXX14 = clang++
+# CXX17 = clang++
+
+################################################################################
+
+# FLIBS =  -L/usr/local/opt/gcc/lib/gcc/current/ -lgfortran -lquadmath -lm
+# CC = /usr/local/opt/llvm/bin/clang
+# CXX = /usr/local/opt/llvm/bin/clang++ -std=gnu++11
+# CXX98 = /usr/local/opt/llvm/bin/clang++
+# CXX11 = /usr/local/opt/llvm/bin/clang++
+# CXX14 = /usr/local/opt/llvm/bin/clang++
+# CXX17 = /usr/local/opt/llvm/bin/clang++
