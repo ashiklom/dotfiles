@@ -1,7 +1,0 @@
-[sncli]
-cfg_sn_username = xxxx
-cfg_sn_password = xxxx
-
-kb_edit_note = enter
-
-cfg_editor = nvim

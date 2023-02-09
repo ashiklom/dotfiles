@@ -1,7 +1,0 @@
-#!/bin/bash
-
-SERVER="$@"
-
-ssh $SERVER mkdir -p \~/.terminfo
-infocmp xterm-kitty | ssh $SERVER "cat > /tmp/kitty.terminfo"
-ssh $SERVER tic -x -o \~/.terminfo /tmp/kitty.terminfo

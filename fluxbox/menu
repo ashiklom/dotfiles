@@ -1,5 +1,0 @@
-[begin] (fluxbox)
-[include] (/etc/X11/fluxbox/fluxbox-menu)
-[exec] (Shutdown) {sudo shutdown now}
-[exec] (Reboot) {sudo reboot}
-[end]

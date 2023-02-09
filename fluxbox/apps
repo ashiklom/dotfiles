@@ -1,9 +1,0 @@
-[app] (name=fbrun)
-  [Position]	(WINCENTER)	{0 0}
-  [Layer]	{2}
-[end]
-
-[app] (urxvt)
-  [Dimensions] {45% 90%}
-  [Position] (BottomRight) {5% 5%}
-[end]
