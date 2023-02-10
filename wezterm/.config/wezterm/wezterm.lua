@@ -1,5 +1,12 @@
 local wezterm = require 'wezterm'
 
+local act = wezterm.action
+
+local tabkeys = {}
+for i = 1, 9 do
+  table.insert(tabkeys, {key = tostring(i), mods = "LEADER", action = act.ActivateTab(i-1)})
+end
+
 return {
   font = wezterm.font 'JetBrainsMono Nerd Font',
   -- font = wezterm.font 'Hack Nerd Font',
@@ -26,7 +33,31 @@ return {
     top = 0,
     bottom = 0
   },
+  leader = {mods = "CTRL", key = "a", timeout_milliseconds = 10000},
   keys = {
-    {mods = "ALT", key = "Enter", action = wezterm.action.DisableDefaultAssignment}
+    {mods = "LEADER", key = "-", action = act.SplitPane{direction = "Down"}},
+    {mods = "LEADER", key = "_", action = act.SplitPane{direction = "Up"}},
+    {mods = "LEADER", key = "\\", action = act.SplitPane{direction = "Right"}},
+    {mods = "LEADER", key = "|", action = act.SplitPane{direction = "Left"}},
+    {mods = "LEADER", key = "j", action = act.ActivatePaneDirection 'Down'},
+    {mods = "LEADER", key = "k", action = act.ActivatePaneDirection 'Up'},
+    {mods = "LEADER", key = "h", action = act.ActivatePaneDirection 'Left'},
+    {mods = "LEADER", key = "l", action = act.ActivatePaneDirection 'Right'},
+    {mods = "LEADER|SHIFT", key = "J", action = act.AdjustPaneSize {'Down', 5}},
+    {mods = "LEADER|SHIFT", key = "K", action = act.AdjustPaneSize {'Up', 5}},
+    {mods = "LEADER|SHIFT", key = "H", action = act.AdjustPaneSize {'Left', 5}},
+    {mods = "LEADER|SHIFT", key = "L", action = act.AdjustPaneSize {'Right', 5}},
+    {mods = "LEADER", key = ">", action = act.RotatePanes 'Clockwise'},
+    {mods = "LEADER", key = "<", action = act.RotatePanes 'CounterClockwise'},
+    {mods = "LEADER", key = "w", action = act.PaneSelect {mode = "Activate"}},
+    {mods = "LEADER", key = "s", action = act.PaneSelect {mode = "SwapWithActive"}},
+    {mods = "LEADER", key = "Enter", action = act.ActivateCopyMode},
+    {mods = "LEADER", key = "?", action = act.QuickSelect},
+    {mods = "LEADER", key = "n", action = act.SpawnTab "CurrentPaneDomain"},
+    {mods = "LEADER", key = "z", action = act.TogglePaneZoomState},
+    {mods = "LEADER", key = "p", action = act.PasteFrom "Clipboard"},
+    -- {mods = "LEADER", key = ":", action = act.ActivateCommandPalette},
+    {mods = "ALT", key = "Enter", action = act.DisableDefaultAssignment},
+    table.unpack(tabkeys)
   }
 }
