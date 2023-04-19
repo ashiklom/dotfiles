@@ -48,32 +48,29 @@ urgency.uda.priority.L.coefficient = -1.0
 
 urgency.user.tag.cli.coefficient = -1.0
 
-report.next.filter = status:pending -WAITING limit:page -cli
-report.next.sort = urgency-,due+
-report.next.columns = id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.relative,until.remaining,description.count
-report.next.labels = ID,Active,Age,Deps,P,Project,Tag,Recur,S,Due,Until,Description
+report.next.filter = status:pending -cli limit:page
+report.next.sort = order+,urgency-,due+
+report.next.columns = id,order,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.relative,until.remaining,description.count
+report.next.labels = ID,Ord,Active,Age,Deps,P,Project,Tag,Recur,S,Due,Until,Description
 
 uda.taskwarrior-tui.task-report.next.filter = status:pending -cli
-uda.taskwarrior-tui.task-report.next.sort = urgency-,due+
 uda.taskwarrior-tui.shortcuts.9 = taskopen
 uda.taskwarrior-tui.shortcuts.8 = tnote
+uda.taskwarrior-tui.shortcuts.7 = task mod -in +next
 news.version=2.6.0
+
+uda.order.type = string
+uda.order.label = Ord
+urgency.uda.order.coefficient = 30
 
 report.list.filter = status:pending depends: -WAITING -cli
 report.list.columns = id,depends.indicator,priority,due.relative,description.count,project,tags
 report.list.labels = ID,D,P,Due,Description,Project,Tag
 
-report.ls.filter = -COMPLETED -DELETED
+report.ls.filter = (status:pending or status:waiting)
 report.ls.sort = urgency-,due+
 
 report.in.description = Inbox
 report.in.filter = status:pending limit:page (+in)
 report.in.columns = id,due.relative,description.count
 report.in.labels = ID,Due,Description
-
-uda.reviewed.type=date
-uda.reviewed.label=Reviewed
-report._reviewed.description=Tasksh review report.  Adjust the filter to your needs.
-report._reviewed.columns=uuid
-report._reviewed.sort=reviewed+,modified+
-report._reviewed.filter=( reviewed.none: or reviewed.before:now-6days ) and ( +PENDING or +WAITING )
