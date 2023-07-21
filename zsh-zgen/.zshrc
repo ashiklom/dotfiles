@@ -7,8 +7,6 @@ if [[ -f "$HOME/.profile" ]]; then
     source "$HOME/.profile"
 fi
 
-alias pivssh='ssh -A -o PKCS11Provider=/usr/lib/ssh-keychain.dylib'
-
 MY_DOT_DIR=${MY_DOT_DIR:-$HOME/dotfiles}
 
 # Bootstrap zgenom
@@ -41,7 +39,6 @@ if ! zgenom saved; then
     # zgenom compile "$HOME/.zshrc"
 fi
 
-
 hascmd() {
   command -v $1 >/dev/null
 }
@@ -54,19 +51,8 @@ if hascmd hub; then
     alias git='hub'
 fi
 
-# source "$MY_DOT_DIR/shrc-aliases/pbcopy.sh"
 alias ghash="git log --pretty=format:'%h' -n 1"
-
-if hascmd gls; then
-  alias ls='\gls --color=auto --group-directories-first'
-else
-  alias ls='ls -G'
-fi
-
-# pecan server setup
-if [[ "$(hostname | grep 'pecan')" ]]; then
-    source "$MY_DOT_DIR/shrc-aliases/ssh-agent.sh"
-fi
+alias ls='ls --color=auto'
 
 # fzf
 if [[ -f "$HOME/.fzf.zsh" ]]; then
@@ -83,34 +69,6 @@ if [[ -d "$HOME/Applications/Emacs.app" ]]; then
   alias emacs="$HOME/Applications/Emacs.app/Contents/MacOS/Emacs"
   export PATH="$HOME/Applications/Emacs.app/Contents/MacOS/bin:$PATH":
 fi
-
-hascmd gman && alias man=gman
-
-# if hascmd bat; then
-#   export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-# fi
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/ashiklom/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/ashiklom/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/ashiklom/opt/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/ashiklom/opt/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-
-if [ -f "/Users/ashiklom/opt/anaconda3/etc/profile.d/mamba.sh" ]; then
-    . "/Users/ashiklom/opt/anaconda3/etc/profile.d/mamba.sh"
-fi
-# <<< conda initialize <<<
-
-# Allow pyvenv to access conda environments
-export WORKON_HOME="/Users/ashiklom/opt/anaconda3/envs/"
 
 if [ -f "$HOME/src/aws-mfa" ]; then
     alias aws-mfa='. ~/src/aws-mfa'
@@ -148,10 +106,50 @@ fi
 alias isodate="date +%Y-%m-%d"
 alias temperature='sudo powermetrics --samplers smc |grep -i "CPU die temperature"'
 
-export NVM_DIR="$HOME/.nvm"
+NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 alias maapauth='source -- <(ssh root@35.162.142.31 -p 32034 python -- < ~/projects/eis/aws-auth.py)'
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/ashiklom/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/ashiklom/mambaforge/etc/profile.d/conda.sh" ]; then
+        . "/home/ashiklom/mambaforge/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/ashiklom/mambaforge/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+if [ -f "/home/ashiklom/mambaforge/etc/profile.d/mamba.sh" ]; then
+    . "/home/ashiklom/mambaforge/etc/profile.d/mamba.sh"
+fi
+
+certs() {
+  eval $("/mnt/c/weasel/weasel-pageant-1.4/weasel-pageant" -r)
+}
+
+aws-mfa() {
+  . ~/.local/src/aws-mfa
+}
+
+open() {
+  powershell.exe -c start "$1"
+}
+
+export BROWSER='powershell.exe -c start "%s"'
+
+MY_SPACKDIR="$HOME/projects/src/spack"
+if [ -f "$MY_SPACKDIR/share/spack/setup-env.sh" ]; then
+  source "$MY_SPACKDIR/share/spack/setup-env.sh"
+fi
+
+# Set up WSL display
+export DISPLAY=:0
 
 # zprof

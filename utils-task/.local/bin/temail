@@ -1,3 +1,6 @@
 #!/usr/bin/env bash
 
-task "$1" ann -- "$(fd . ~/inbox | fzf)"
+# TODO: Fix the path here so it's relative to Windows (understood by
+# Powershell), not Linux. Replace `~/windows-home` with ...?
+
+task "$1" ann -- "$(fd . ~/windows-home/Documents/inbox/ | fzf)"

@@ -8,7 +8,8 @@ for i = 1, 9 do
 end
 
 return {
-  font = wezterm.font 'JetBrainsMono Nerd Font',
+  default_prog = {"wsl.exe", "-d", "Ubuntu", "--cd", "~"}
+  -- font = wezterm.font 'JetBrainsMono Nerd Font',
   -- font = wezterm.font 'Hack Nerd Font',
   -- font = wezterm.font 'JuliaMono',
   font_size = 13,
