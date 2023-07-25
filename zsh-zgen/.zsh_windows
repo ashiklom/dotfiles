@@ -1,0 +1,25 @@
+#!/usr/bin/sh
+
+# If not Windows, return early
+(uname -r | grep -qi "microsoft") || return 0
+
+# Now, get WSL version
+if [ $(uname -r | gawk -F '.' '{printf "%d%02d", $1, $2}') -gt 419 ]; then
+  WSL_VERSION=2
+else
+  WSL_VERSION=1
+  export DISPLAY=:0
+fi
+
+certs() {
+  eval $("/mnt/c/weasel/weasel-pageant-1.4/weasel-pageant" -r)
+}
+
+alias powershell="/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe"
+
+open() {
+  powershell -c start "$1"
+}
+
+export BROWSER='/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -c start "%s"'
+export WSL_VERSION

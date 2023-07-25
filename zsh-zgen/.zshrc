@@ -7,8 +7,6 @@ if [[ -f "$HOME/.profile" ]]; then
     source "$HOME/.profile"
 fi
 
-MY_DOT_DIR=${MY_DOT_DIR:-$HOME/dotfiles}
-
 # Bootstrap zgenom
 if [[ ! -d "$HOME/.zgenom" ]]; then
   git clone https://github.com/jandamm/zgenom.git "${HOME}/.zgenom"
@@ -47,13 +45,6 @@ hascmd() {
 # NOTE: `fzf` (below) will override this if installed
 bindkey '^r' history-incremental-search-backward
 
-if hascmd hub; then
-    alias git='hub'
-fi
-
-alias ghash="git log --pretty=format:'%h' -n 1"
-alias ls='ls --color=auto'
-
 # fzf
 if [[ -f "$HOME/.fzf.zsh" ]]; then
   source "$HOME/.fzf.zsh"
@@ -65,30 +56,9 @@ if hascmd nvim; then
   export EDITOR=nvim
 fi
 
-if [[ -d "$HOME/Applications/Emacs.app" ]]; then
-  alias emacs="$HOME/Applications/Emacs.app/Contents/MacOS/Emacs"
-  export PATH="$HOME/Applications/Emacs.app/Contents/MacOS/bin:$PATH":
-fi
-
-if [ -f "$HOME/src/aws-mfa" ]; then
-    alias aws-mfa='. ~/src/aws-mfa'
-    eis() {
-        declare -A ec2commands
-        ec2commands[status]="describe-instances"
-        ec2commands[start]="start-instances"
-        ec2commands[stop]="stop-instances"
-        COMMAND=${1}
-        declare -A eisids
-        eisids[compute]="i-01372ccb6a8b5a762"
-        eisids[bastion]="i-0d4f1c3769c2426db"
-        TARGET=${2}
-        aws ec2 "$ec2commands[$COMMAND]" --instance-ids "$eisids[$TARGET]"
-    }
-fi
-
 if [ -f ~/.fzf.zsh ]; then
   source ~/.fzf.zsh
-  if command -v fd > /dev/null; then
+  if hascmd fd; then
     # FZF_SEARCH="--search-path $HOME --search-path $HOME/.config --search-path $HOME/.local"
     _fzf_compgen_path() {
       fd --hidden --follow --exclude ".git" . "$1"
@@ -103,14 +73,15 @@ if [ -f ~/.fzf.zsh ]; then
   fi
 fi
 
-alias isodate="date +%Y-%m-%d"
-alias temperature='sudo powermetrics --samplers smc |grep -i "CPU die temperature"'
+if [ -f "$HOME/.local/src/aws-mfa" ]; then
+  aws-mfa() {
+    . "$HOME/.local/src/aws-mfa"
+  }
+fi
 
 NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-alias maapauth='source -- <(ssh root@35.162.142.31 -p 32034 python -- < ~/projects/eis/aws-auth.py)'
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -130,26 +101,12 @@ if [ -f "/home/ashiklom/mambaforge/etc/profile.d/mamba.sh" ]; then
     . "/home/ashiklom/mambaforge/etc/profile.d/mamba.sh"
 fi
 
-certs() {
-  eval $("/mnt/c/weasel/weasel-pageant-1.4/weasel-pageant" -r)
-}
-
-aws-mfa() {
-  . ~/.local/src/aws-mfa
-}
-
-open() {
-  powershell.exe -c start "$1"
-}
-
-export BROWSER='powershell.exe -c start "%s"'
-
 MY_SPACKDIR="$HOME/projects/src/spack"
 if [ -f "$MY_SPACKDIR/share/spack/setup-env.sh" ]; then
   source "$MY_SPACKDIR/share/spack/setup-env.sh"
 fi
 
-# Set up WSL display
-export DISPLAY=:0
+[ -f "$HOME/.bash_aliases" ] && \. "$HOME/.bash_aliases"
+[ -f "$HOME/.zsh_windows" ] && \. "$HOME/.zsh_windows"
 
 # zprof
