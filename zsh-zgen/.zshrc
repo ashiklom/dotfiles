@@ -83,24 +83,6 @@ NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/ashiklom/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/ashiklom/mambaforge/etc/profile.d/conda.sh" ]; then
-        . "/home/ashiklom/mambaforge/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/ashiklom/mambaforge/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-
-if [ -f "/home/ashiklom/mambaforge/etc/profile.d/mamba.sh" ]; then
-    . "/home/ashiklom/mambaforge/etc/profile.d/mamba.sh"
-fi
-
 MY_SPACKDIR="$HOME/projects/src/spack"
 if [ -f "$MY_SPACKDIR/share/spack/setup-env.sh" ]; then
   source "$MY_SPACKDIR/share/spack/setup-env.sh"
@@ -110,3 +92,16 @@ fi
 [ -f "$HOME/.zsh_windows" ] && \. "$HOME/.zsh_windows"
 
 # zprof
+
+# >>> mamba initialize >>>
+# !! Contents within this block are managed by 'mamba init' !!
+export MAMBA_EXE='/usr/bin/micromamba';
+export MAMBA_ROOT_PREFIX='/home/ashiklom/micromamba';
+__mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__mamba_setup"
+else
+    alias micromamba="$MAMBA_EXE"  # Fallback on help from mamba activate
+fi
+unset __mamba_setup
+# <<< mamba initialize <<<

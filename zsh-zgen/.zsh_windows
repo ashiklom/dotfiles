@@ -16,6 +16,7 @@ certs() {
 }
 
 alias powershell="/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe"
+alias wsl="/mnt/c/Windows/system32/wsl.exe"
 
 open() {
   powershell -c start "$1"
