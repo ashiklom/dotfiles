@@ -7,7 +7,7 @@ task_attributes="priority,project,tags,description"
 --sort:"urgency-,annot"
 --active-tasks:"-COMPLETED -DELETED"
 EDITOR=nvim
-path_ext=/home/ashiklom/.local/src/taskopen/scripts/
+path_ext=/home/ashiklom/src/aur/taskopen/src/taskopen-2.0.1/scripts
 
 [Actions]
 
@@ -18,12 +18,12 @@ txtfile.modes="batch,any,normal"
 
 files.labelregex=".*"
 files.regex="^[\\.\\/~]+.*\\.(.*)"
-files.command=""" powershell.exe -c start \"$FILE\" """
+files.command=""" winopen \"$FILE\" """
 files.modes="batch,any,normal"
 files.filtercommand = """ test "${FILE##*.}" != md && test "${FILE##*.}" != txt """
 
 onenote.regex="^onenote"
-onenote.command=""" powershell.exe -c start \"$FILE\" """
+onenote.command=""" winopen \"$FILE\" """
 onenote.modes="batch,any,normal"
 
 notes.regex="^Notes\\.?(.*)?"
@@ -32,5 +32,5 @@ notes.modes="batch,any,normal"
 
 url.labelregex=".*"
 url.regex="((?:www|http).*)"
-url.command=""" powershell.exe -c start \"$FILE\" """
+url.command=""" winopen \"$FILE\" """
 url.modes="batch,any,normal"
