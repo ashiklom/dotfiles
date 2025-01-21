@@ -8,7 +8,7 @@ if [ $(uname -r | gawk -F '.' '{printf "%d%02d", $1, $2}') -gt 419 ]; then
   WSL_VERSION=2
 else
   WSL_VERSION=1
-  export DISPLAY=:0
+  # export DISPLAY=:0
 fi
 
 certs() {
@@ -21,6 +21,9 @@ alias wsl="/mnt/c/Windows/system32/wsl.exe"
 open() {
   powershell -c start "$1"
 }
+
+# Set DISPLAY to vcxsrv
+# export DISPLAY="$(grep nameserver /etc/resolv.conf | sed 's/nameserver //')":0
 
 export BROWSER='/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -c start "%s"'
 export WSL_VERSION

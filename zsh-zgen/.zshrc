@@ -14,11 +14,11 @@ fi
 
 # Load zgenom
 source "${HOME}/.zgenom/zgenom.zsh"
-zgenom autoupdate
+# zgenom autoupdate
 
 if ! zgenom saved; then
 
-    # zgenom ohmyzsh
+    zgenom ohmyzsh
     zgenom ohmyzsh plugins/colored-man-pages
 
     zgenom prezto
@@ -52,7 +52,6 @@ fi
 
 # Use neovim for vim
 if hascmd nvim; then
-  alias vim=nvim
   export EDITOR=nvim
 fi
 
@@ -105,3 +104,8 @@ else
 fi
 unset __mamba_setup
 # <<< mamba initialize <<<
+alias mamba=micromamba
+
+export PATH=$PATH:/home/ashiklom/.pixi/bin
+
+. "$HOME/.cargo/env"

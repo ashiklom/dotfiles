@@ -1,0 +1,10 @@
+#!/usr/bin/env Rscript
+
+argv <- commandArgs(trailingOnly = TRUE)
+ndigit <- 6
+if (length(argv) > 0) {
+  ndigit <- as.integer(argv[1])
+}
+cat(sample(10^ndigit - 1, 1))
+
+# vim: set ft=r:

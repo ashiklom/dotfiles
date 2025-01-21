@@ -26,6 +26,10 @@ onenote.regex="^onenote"
 onenote.command=""" winopen \"$FILE\" """
 onenote.modes="batch,any,normal"
 
+outlook.regex="^outlook"
+outlook.command=""" winopen \"$FILE\" """
+outlook.modes="batch,any,normal"
+
 notes.regex="^Notes\\.?(.*)?"
 notes.command=""" editnote2 "/home/ashiklom/.task/tasknotes/$UUID.${LAST_MATCH:-md}" "$UUID" """
 notes.modes="batch,any,normal"
