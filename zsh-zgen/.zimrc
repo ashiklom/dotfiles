@@ -34,6 +34,11 @@ zmodule sorin
 
 zmodule joke/zim-github-cli
 
+# SSH configuration
+zstyle :omz:plugins:ssh-agent agent-forwarding yes
+zstyle :omz:plugins:ssh-agent quiet yes
+zmodule ohmyzsh/ohmyzsh --root plugins/ssh-agent
+
 #
 # Completion
 #

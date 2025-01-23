@@ -6,6 +6,8 @@ alias isodate="date +%Y-%m-%d"
 
 alias vnv="source .venv/bin/activate"
 
+alias pivssh="ssh-add -s /usr/lib/ssh-keychain.dylib"
+
 M21C_ID="i-0e32163ee5438c0fb"
 m21c_off() {
   aws ec2 stop-instances --instance-ids $M21C_ID --no-cli-pager

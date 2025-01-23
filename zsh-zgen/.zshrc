@@ -129,10 +129,6 @@ for key ('j') bindkey -M vicmd ${key} history-substring-search-down
 unset key
 # }}} End configuration added by Zim install
 
-
-# Uncomment here and at end for profiling startup
-# zmodload zsh/zprof
-
 if [[ -f "$HOME/.profile" ]]; then
     source "$HOME/.profile"
 fi
@@ -189,8 +185,6 @@ fi
 
 [ -f "$HOME/.bash_aliases" ] && \. "$HOME/.bash_aliases"
 [ -f "$HOME/.zsh_windows" ] && \. "$HOME/.zsh_windows"
-
-# zprof
 
 if [ -d "$HOME/.pixi/bin" ]; then
   export PATH=$PATH:$HOME/.pixi/bin
