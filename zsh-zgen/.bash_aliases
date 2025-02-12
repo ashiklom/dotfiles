@@ -6,7 +6,12 @@ alias isodate="date +%Y-%m-%d"
 
 alias vnv="source .venv/bin/activate"
 
-alias pivssh="ssh-add -s /usr/lib/ssh-keychain.dylib"
+pivssh() {
+  # Remove existing keys (if present)
+  ssh-add -L | grep 'PIV\|Digital Signature' | ssh-add -d -
+  # ...and then refresh the input
+  ssh-add -s /usr/lib/ssh-keychain.dylib
+}
 
 M21C_ID="i-0e32163ee5438c0fb"
 m21c_off() {
