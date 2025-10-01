@@ -6,6 +6,10 @@ alias isodate="date +%Y-%m-%d"
 
 alias vnv="source .venv/bin/activate"
 
+if alias pivssh &> /dev/null; then
+  unalias pivssh
+fi
+
 pivssh() {
   # Remove existing keys (if present)
   ssh-add -L | grep 'PIV\|Digital Signature' | ssh-add -d -
@@ -13,15 +17,43 @@ pivssh() {
   ssh-add -s /usr/lib/ssh-keychain.dylib
 }
 
-M21C_ID="i-0e32163ee5438c0fb"
-m21c_off() {
-  aws ec2 stop-instances --instance-ids $M21C_ID --no-cli-pager
+awsprof() {
+  if ! command -v aws-sso-profile >/dev/null; then
+    echo "aws-sso-profile command not found"
+    return 1
+  fi
+  if [[ "$#" -eq 0 ]]; then
+    echo "AWS_SSO_PROFILE=$AWS_SSO_PROFILE"
+    return 0
+  fi
+  if [[ "$1" = "-d" ]]; then
+    echo "Clearing AWS_PROFILE"
+    aws-sso-clear 
+    return 0
+  fi
+  PROF="smdc-aws-"${1}":Project-Admin"
+  echo "Setting profile: $PROF"
+  aws-sso-profile "$PROF"
 }
 
-m21c_on() {
-  aws ec2 start-instances --instance-ids $M21C_ID --no-cli-pager
+azsubid() {
+  export ARM_SUBSCRIPTION_ID=$(az account list --query '[?isDefault].id' --output tsv)
 }
 
-m21c_status() {
-  aws ec2 describe-instances --instance-ids $M21C_ID --query 'Reservations[].Instances[].[State.Name,PublicIpAddress]' --output table --no-cli-pager
+azlogin() {
+  az login -t smce.nasa.gov
+  azsubid
+}
+
+apache() {
+  LICENSEFILE="$HOME/.cache/apache_2_0"
+  if [[ ! -f $LICENSEFILE ]]; then
+    echo "$LICENSEFILE not found in cache. Downloading..."
+    curl -L https://www.apache.org/licenses/LICENSE-2.0.txt -o $LICENSEFILE
+  fi
+  cp $LICENSEFILE ${1:-LICENSE}
+}
+
+ghostic() {
+  infocmp -x xterm-ghostty | ssh "$@" -- tic -x -
 }

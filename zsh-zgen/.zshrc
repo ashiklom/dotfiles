@@ -1,4 +1,6 @@
 #!/usr/bin/env zsh
+# Profiling:
+# zmodload zsh/zprof
 # Start configuration added by Zim install {{{
 #
 # User configuration sourced by interactive shells
@@ -168,12 +170,6 @@ if [ -f ~/.fzf.zsh ]; then
   fi
 fi
 
-if [ -f "$HOME/.local/src/aws-mfa" ]; then
-  aws-mfa() {
-    . "$HOME/.local/src/aws-mfa"
-  }
-fi
-
 NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -186,8 +182,32 @@ fi
 [ -f "$HOME/.bash_aliases" ] && \. "$HOME/.bash_aliases"
 [ -f "$HOME/.zsh_windows" ] && \. "$HOME/.zsh_windows"
 
-if [ -d "$HOME/.pixi/bin" ]; then
-  export PATH=$PATH:$HOME/.pixi/bin
+# alias pivssh='ssh -A -o PKCS11Provider=/usr/lib/ssh-keychain.dylib'
+
+if hascmd tv; then
+  eval "$(tv init zsh)"
 fi
 
-[ -f "$HOME/.cargo/env" ] && \. "$HOME/.cargo/env"
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+path=('/Users/ashiklom/.juliaup/bin' $path)
+export PATH
+
+# <<< juliaup initialize <<<
+
+# Completions for AWS SSO
+if [[ -f "$HOME/.local/share/aws_sso_comp" ]]; then
+  source "$HOME/.local/share/aws_sso_comp"
+fi
+
+WEZTERM_DIR="$HOME/Applications/WezTerm.app/Contents/MacOS"
+if [[ -d $WEZTERM_DIR ]]; then
+  path=($WEZTERM_DIR $path)
+  export PATH
+fi
+
+# Deduplicate PATH
+typeset -U PATH
+# zprof
